@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>تسجيل الدخول - مكتب الضبط الرقمي</title>
-    <!-- Font Awesome for icons -->
+    <title>مكتب الضبط الرقمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="login-wrapper">
-        <!-- Left Side -->
+        <!-- القسم الأيسر -->
         <div class="login-left">
             <div class="brand">
-                <h1>مكتب الضبط الرقمي</h1>
-                <p class="brand-sub">Bureau d'ordre digital</p>
+                <div class="brand-header">
+                    <div class="brand-icon">
+                        <img src="https://depotimage.com/wp-content/uploads/2025/01/copy-icon.png.webp" alt="شعار مكتب الضبط الرقمي" />
+                    </div>
+                    <div class="brand-text">
+                        <h1>مكتب الضبط الرقمي</h1>
+                        <p class="brand-sub">Bureau d'ordre digital</p>
+                    </div>
+                </div>
                 <h2>نظام متكامل <br /> إدارة المراسلات الإدارية</h2>
                 <p class="desc">
                     سجل، تتبع، وأرشف المراسلات الواردة والصادرة بشكل رقمي.<br />
                     آمن، واستغني عن السجلات الورقية.
                 </p>
             </div>
+
             <div class="features">
                 <div class="feature-item">
                     <i class="fas fa-shield-alt"></i>
@@ -44,32 +52,53 @@
                     </div>
                 </div>
             </div>
+
             <p class="copyright">© 2026 — مشروع نهاية التدريب</p>
         </div>
 
-        <!-- Right Side -->
+        <!-- القسم الأيمن -->
         <div class="login-right">
             <div class="login-card">
                 <h2>أهلاً بك</h2>
                 <p class="welcome-text">سجل الدخول للوصول إلى لوحة التحكم</p>
+
                 <div class="tabs">
                     <button class="tab active">تسجيل الدخول</button>
                     <button class="tab">حساب جديد</button>
                 </div>
-                <form id="loginForm">
+
+                <form id="loginForm" class="form-login">
                     <div class="input-group">
                         <label>البريد الإلكتروني</label>
-                        <input type="email" value="s.elharda9418@uca.ac.ma" />
+                        <input type="email" placeholder="example@domain.com" />
                     </div>
                     <div class="input-group">
                         <label>كلمة المرور</label>
-                        <input type="password" value="********" />
+                        <input type="password" placeholder="••••••••" />
                     </div>
                     <button type="submit" class="btn-login">دخول</button>
+                </form>
+
+                <form id="signupForm" class="form-signup" style="display: none;">
+                    <div class="input-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" placeholder="الاسم الثلاثي" />
+                    </div>
+                    <div class="input-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" placeholder="example@domain.com" />
+                    </div>
+                    <div class="input-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" placeholder="••••••••" />
+                    </div>
+                    <button type="submit" class="btn-login">إنشاء الحساب</button>
+                    <p class="hint">(أدخل حساب إدخال حسابك المحدد)</p>
                 </form>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
