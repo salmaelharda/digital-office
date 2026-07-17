@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>لوحة التحكم - مكتب الضبط الرقمي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h3>مكتب الضبط</h3>
+                <span>Bureau d'ordre</span>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="dashboard.html"><i class="fas fa-chart-pie"></i> لوحة التحكم</a></li>
+                    <li><a href="arrivee.html"><i class="fas fa-inbox"></i> المراسلات الواردة</a></li>
+                    <li><a href="depart.html"><i class="fas fa-paper-plane"></i> المراسلات الصادرة</a></li>
+                    <li><a href="archive.html"><i class="fas fa-search"></i> الرئيسي والبحث</a></li>
+                </ul>
+            </nav>
+            <div class="user-card">
+                <p><i class="fas fa-user-circle"></i> s.elharda9418@uca.ac.ma</p>
+                <span>مدير النظام</span>
+                <button onclick="logout()"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="main">
+            <header class="top-bar">
+                <h1>لوحة التحكم</h1>
+                <p>نظرة عامة على المراسلات ونشاط المكتب</p>
+            </header>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h3>المراسلات الواردة</h3>
+                        <p class="stat-number">0</p>
+                        <small>المجموع الكلي</small>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <div>
+                        <h3>المراسلات الصادرة</h3>
+                        <p class="stat-number">0</p>
+                        <small>المجموع الكلي</small>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <h3>قيد الانتظار</h3>
+                        <p class="stat-number">0</p>
+                        <small>في انتظار المعالجة</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart (fake) -->
+            <div class="chart-card">
+                <h3><i class="fas fa-chart-line"></i> إحصائيات الشهر</h3>
+                <div class="chart-placeholder">
+                    <span>📊 [رسم بياني تفاعلي هنا]</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

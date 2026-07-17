@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>المراسلات الواردة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">
+                <h3>مكتب الضبط</h3>
+                <span>Bureau d'ordre</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-chart-pie"></i> لوحة التحكم</a></li>
+                    <li class="active"><a href="arrivee.html"><i class="fas fa-inbox"></i> المراسلات الواردة</a></li>
+                    <li><a href="depart.html"><i class="fas fa-paper-plane"></i> المراسلات الصادرة</a></li>
+                    <li><a href="archive.html"><i class="fas fa-search"></i> الرئيسي والبحث</a></li>
+                </ul>
+            </nav>
+            <div class="user-card">
+                <p><i class="fas fa-user-circle"></i> s.elharda9418@uca.ac.ma</p>
+                <span>مدير النظام</span>
+                <button onclick="logout()"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="top-bar">
+                <h1>المراسلات الواردة</h1>
+                <p>تسجيل وإدارة المراسلات الواردة إلى المؤسسة</p>
+            </header>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الرقم</th>
+                            <th>المرسل</th>
+                            <th>القسم / المصلحة</th>
+                            <th>الموضوع</th>
+                            <th>تاريخ التوصل</th>
+                        </tr>
+                    </thead>
+                    <tbody id="arriveeBody">
+                        <tr>
+                            <td colspan="5" class="empty-row">
+                                <i class="fas fa-inbox fa-2x"></i>
+                                <p>لا توجد مراسلات مسجلة بعد</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

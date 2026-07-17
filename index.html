@@ -1,28 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>تسجيل الدخول - مكتب الضبط الرقمي</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-    <div class="container">
-        <h1>🌤 Weather App</h1>
-
-        <div class="search-box">
-            <input type="text" id="cityInput" placeholder="Enter city name">
-            <button onclick="getWeather()">Search</button>
+    <div class="login-wrapper">
+        <!-- Left Side -->
+        <div class="login-left">
+            <div class="brand">
+                <h1>مكتب الضبط الرقمي</h1>
+                <p class="brand-sub">Bureau d'ordre digital</p>
+                <h2>نظام متكامل <br /> إدارة المراسلات الإدارية</h2>
+                <p class="desc">
+                    سجل، تتبع، وأرشف المراسلات الواردة والصادرة بشكل رقمي.<br />
+                    آمن، واستغني عن السجلات الورقية.
+                </p>
+            </div>
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <h4>أمان عالي</h4>
+                        <p>صلاحيات محكمة لكل مستخدم</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-archive"></i>
+                    <div>
+                        <h4>أرشيف رقمي</h4>
+                        <p>حفظ الوثائق والمرفقات</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-search"></i>
+                    <div>
+                        <h4>بحث متقدم</h4>
+                        <p>الوصول إلى مراسلة في ثوان</p>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">© 2026 — مشروع نهاية التدريب</p>
         </div>
 
-        <div class="weather-box" id="weatherBox">
-            <h2 id="cityName"></h2>
-            <p id="temperature"></p>
-            <p id="description"></p>
+        <!-- Right Side -->
+        <div class="login-right">
+            <div class="login-card">
+                <h2>أهلاً بك</h2>
+                <p class="welcome-text">سجل الدخول للوصول إلى لوحة التحكم</p>
+                <div class="tabs">
+                    <button class="tab active">تسجيل الدخول</button>
+                    <button class="tab">حساب جديد</button>
+                </div>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" value="s.elharda9418@uca.ac.ma" />
+                    </div>
+                    <div class="input-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" value="********" />
+                    </div>
+                    <button type="submit" class="btn-login">دخول</button>
+                </form>
+            </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

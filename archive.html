@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>الرئيسي والبحث</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">
+                <h3>مكتب الضبط</h3>
+                <span>Bureau d'ordre</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html"><i class="fas fa-chart-pie"></i> لوحة التحكم</a></li>
+                    <li><a href="arrivee.html"><i class="fas fa-inbox"></i> المراسلات الواردة</a></li>
+                    <li><a href="depart.html"><i class="fas fa-paper-plane"></i> المراسلات الصادرة</a></li>
+                    <li class="active"><a href="archive.html"><i class="fas fa-search"></i> الرئيسي والبحث</a></li>
+                </ul>
+            </nav>
+            <div class="user-card">
+                <p><i class="fas fa-user-circle"></i> s.elharda9418@uca.ac.ma</p>
+                <span>مدير النظام</span>
+                <button onclick="logout()"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="top-bar">
+                <h1>الرئيسي والبحث المتقدم</h1>
+                <p>ابحث في جميع المراسلات القديمة بكلمات مفاتيح أو حسب التاريخ</p>
+            </header>
+
+            <div class="search-box">
+                <div class="search-row">
+                    <input type="text" placeholder="كلمة البحث... رقم، موضوع، مرسل، مرسل إليه، أو ملاحظات..." />
+                    <input type="date" />
+                    <input type="date" />
+                    <button><i class="fas fa-search"></i> بحث</button>
+                </div>
+            </div>
+
+            <div class="result-stats">
+                <p>عدد النتائج: 0</p>
+                <div class="result-tabs">
+                    <span><i class="fas fa-inbox"></i> المراسلات الواردة (0)</span>
+                    <span><i class="fas fa-paper-plane"></i> المراسلات الصادرة (0)</span>
+                </div>
+            </div>
+
+            <div class="empty-state">
+                <i class="fas fa-folder-open fa-3x"></i>
+                <p>لا توجد نتائج</p>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
