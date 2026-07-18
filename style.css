@@ -374,4 +374,8 @@ body {
         height: 40px;
         padding: 6px;
     }
+    .brand-icon i{
+        font-size: 28px;
+        color: #fff;
+    }
 }
