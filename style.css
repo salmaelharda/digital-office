@@ -20,30 +20,29 @@ body {
 /* ============================================================
    LOGIN WRAPPER - جنباً إلى جنب
    ============================================================ */
-.login-wrapper {
-    display: flex;
-    flex-direction: row;
-    max-width: 1200px;
-    width: 100%;
-    background: #ffffff;
-    border-radius: 32px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
-    overflow: hidden;
-    margin: 20px;
+.login-wrapper{
+    display:flex;
+    flex-direction:row-reverse;
+    width:95%;
+    max-width:1280px;
+    height:640px;
+    background:#fff;
+    border-radius:0;
+    overflow:hidden;
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
 }
 
 /* ============================================================
    LEFT SIDE - DARK BLUE
    ============================================================ */
-.login-left {
-    flex: 1.2;
-    padding: 50px 40px;
-    background: linear-gradient(135deg, #071a42, #0d295e, #143f83);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #ffffff;
-    min-height: 500px;
+.login-left{
+    flex:1;
+    padding:30px 45px;
+    background:linear-gradient(135deg,#081d49,#10336b,#17478f);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    color:#fff;
 }
 
 /* ===== BRAND HEADER WITH ICON ===== */
@@ -100,10 +99,10 @@ body {
 }
 
 .desc {
-    font-size: 22px;
+    font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
-    max-width: 500px;
+    max-width: 520px;
     margin-bottom: 30px;
     font-family: 'Cairo', 'Tajawal', sans-serif;
 }
@@ -113,16 +112,16 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin: 20px 0 30px;
+    margin-top: 25px;
 }
 
 .feature-item {
     display: flex;
     align-items: center;
     gap: 16px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 22px 24px;
-    border-radius: 18px;
+    background: rgba(255, 255, 255, .08);
+    padding: 20px 22px;
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.04);
     transition: all 0.3s ease;
     margin-bottom: 12px;
@@ -136,8 +135,8 @@ body {
 .feature-item i {
     font-size: 22px;
     color: #4a9eff;
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,32 +173,31 @@ body {
 /* ============================================================
    RIGHT SIDE - WHITE
    ============================================================ */
-.login-right {
-    flex: 1;
-    padding: 50px 40px;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 500px;
+.login-right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    background:#fff;
 }
 
-.login-card {
-    width: 100%;
-    max-width: 420px;
+.login-card{
+    width:100%;
+    max-width:420px;
 }
 
 .login-card h2 {
-    font-size: 48px;
-    font-weight: 700;
-    color: #0b2b4a;
-    margin-bottom: 6px;
+    font-size: 58px;
+    font-weight: 800;
+    color: #14345d;
+    margin-bottom: 8px;
     font-family: 'Cairo', 'Tajawal', sans-serif;
 }
 
 .welcome-text {
-    font-size: 20px;
-    color: #4d6d8d;
+    font-size: 18px;
+    color: #65798e;
     margin-bottom: 30px;
     font-family: 'Cairo', 'Tajawal', sans-serif;
 }
@@ -207,31 +205,26 @@ body {
 /* ===== TABS ===== */
 .tabs{
     display:flex;
-    background:#eef3f8;
+    background:#eef2f6;
     padding:4px;
     border-radius:14px;
+    margin-bottom:25px;
     gap:0;
-    margin-bottom:30px;
+    border:none;
 }
-
-.tab {
-    flex: 1;
-    background: transparent;
-    border: none;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #6a8aaa;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: 0.3s;
+.tab{
+    flex:1;
+    padding:12px;
+    border:none;
+    background:transparent;
+    border-radius:10px;
     font-family: 'Cairo', 'Tajawal', sans-serif;
 }
 
-.tab.active {
-     background:#fff;
-color:#123d72;
-box-shadow:0 2px 10px rgba(0,0,0,.08);
+.tab.active{
+    background:#fff;
+    color:#14345d;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 .tab:hover:not(.active) {
@@ -255,7 +248,7 @@ box-shadow:0 2px 10px rgba(0,0,0,.08);
 
 .input-group input {
     width: 100%;
-    height: 58px;
+    height: 54px;
     padding: 0 18px;
     border: 2px solid #e2eaf2;
     border-radius: 12px;
@@ -282,7 +275,7 @@ box-shadow:0 2px 10px rgba(0,0,0,.08);
 
 .btn-login {
     width: 100%;
-    height: 58px;
+    height: 54px;
     border-radius: 12px;
     padding: 16px;
     background: #0b2b4a;
@@ -335,10 +328,10 @@ box-shadow:0 2px 10px rgba(0,0,0,.08);
     }
 
     .brand h2 {
-        font-size: 56px;
-        line-height: 1.1;
+        font-size: 66px;
+        line-height: 1.05;
         font-weight: 800;
-        margin: 40px 0 25px;
+        margin: 35px 0 18px;
     }
 
     .features {
