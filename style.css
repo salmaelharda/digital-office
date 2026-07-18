@@ -18,10 +18,11 @@ body {
 }
 
 /* ============================================================
-   LOGIN WRAPPER
+   LOGIN WRAPPER - جنباً إلى جنب
    ============================================================ */
 .login-wrapper {
     display: flex;
+    flex-direction: row;
     max-width: 1200px;
     width: 100%;
     background: #ffffff;
@@ -32,7 +33,7 @@ body {
 }
 
 /* ============================================================
-   LEFT SIDE - DARK BLUE BACKGROUND
+   LEFT SIDE - DARK BLUE
    ============================================================ */
 .login-left {
     flex: 1.2;
@@ -42,6 +43,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     color: #ffffff;
+    min-height: 500px;
 }
 
 /* ===== BRAND HEADER WITH ICON ===== */
@@ -179,6 +181,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 500px;
 }
 
 .login-card {
@@ -305,21 +308,21 @@ body {
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE - للشاشات الصغيرة يصيرون فوق بعض
    ============================================================ */
 @media (max-width: 900px) {
-    .login-wrapper {
-        flex-direction: column;
-        border-radius: 24px;
-    }
+    .login-wrapper{
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    align-items:stretch;
+}
 
-    .login-left {
-        padding: 30px 25px;
-    }
-
-    .login-right {
-        padding: 30px 25px;
-    }
+.login-left,
+.login-right{
+    width:50%;
+    flex:0 0 50%;
+}
 
     .brand-text h1 {
         font-size: 20px;
