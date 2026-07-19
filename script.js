@@ -1,16 +1,43 @@
 // ============================================================
-// 1. AUTHENTICATION LOGIC (خاص بصفحة تسجيل الدخول والإنشاء)
+// 1. CUSTOM TOAST NOTIFICATION ENGINE (نظام الإشعارات العصرية الجديد)
+// ============================================================
+function showToast(message, type = 'success') {
+    // 1. إنشاء عنصر الإشعار
+    const toast = document.createElement('div');
+    toast.className = `custom-toast toast-${type}`;
+    
+    // 2. اختيار الأيقونة المناسبة حسب النوع (نجاح أو خطأ)
+    const icon = type === 'success' 
+        ? '<i class="fas fa-check-circle"></i>' 
+        : '<i class="fas fa-exclamation-circle"></i>';
+    
+    // 3. تركيب محتوى الإشعار (الكتابة على اليمين والأيقونة حداها)
+    toast.innerHTML = `
+        <span class="toast-text">${message}</span>
+        <span class="toast-icon">${icon}</span>
+    `;
+    
+    // 4. إضافة الإشعار لصفحة الـ HTML
+    document.body.appendChild(toast);
+    
+    // 5. حذفه تلقائياً بعد 3.5 ثواني مع حركة اختفاء ناعمة
+    setTimeout(() => {
+        toast.classList.add('hide');
+        toast.addEventListener('animationend', () => {
+            toast.remove();
+        });
+    }, 3500);
+}
+
+
+// ============================================================
+// 2. AUTHENTICATION LOGIC (تسجيل الدخول والإنشاء)
 // ============================================================
 const tabs = document.querySelectorAll('.tab');
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 
-/* 
-   هاد الشرط (if) مهم بزاف حيت كيتأكد أننا فصفحة الـ Login،
-   وبلا بيه الكود غايتبلوكا ويحبس ليك باقي الدوال فصفحة depart.html
-*/
 if (tabs.length > 0 && loginForm && signupForm) {
-    
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
             tabs.forEach(t => t.classList.remove('active'));
@@ -28,66 +55,74 @@ if (tabs.length > 0 && loginForm && signupForm) {
 
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('✅ تم تسجيل الدخول بنجاح!');
-        // هنا زدنا التوجيه التلقائي لصفحة المراسلات الصادرة باش يدخل نيشان للمنصة
-        window.location.href = 'depart.html'; 
+        
+        // هنا استعملنا الإشعار العصري الجديد للنجاح
+        showToast('مرحباً بعودتك! تم تسجيل الدخول بنجاح.', 'success');
+        
+        // توجيه المستخدم بعد ثانية واحدة باش يلحق يشوف الإشعار الزوين
+        setTimeout(() => {
+            window.location.href = 'dashboard.html'; 
+        }, 1200);
     });
 
     signupForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('✅ تم إنشاء الحساب بنجاح!');
-        // ملي ينشئ الحساب، نرجعوه تلقائياً لتبويب تسجيل الدخول
+        
+        showToast('تم إنشاء الحساب بنجاح! يمكنك الدخول الآن.', 'success');
+        
         if(tabs[0]) tabs[0].click();
     });
 }
 
-// ============================================================
-// 2. GLOBAL & SIDEBAR LOGIC (خاص بالصفحات الداخلية بعد الدخول)
-// ============================================================
 
-// دالة تسجيل الخروج اللي كيعيط ليها الزر اللي كاين فـ السايدبار (Sidebar)
+// ============================================================
+// 3. GLOBAL & SIDEBAR LOGIC (تسجيل الخروج)
+// ============================================================
 function logout() {
-    alert('👋 تم تسجيل الخروج بنجاح.');
-    // كيرجع المستخدم لصفحة اللوغان الرئيسية (تأكد أن اسمها index.html)
-    window.location.href = 'index.html'; 
+    showToast('تم تسجيل الخروج بنجاح. رافقتك السلامة!', 'success');
+    
+    setTimeout(() => {
+        window.location.href = 'index.html'; 
+    }, 1200);
 }
 
-// ============================================================
-// 3. MODAL LOGIC (تحريك وفتح وإغلاق نافذة تسجيل المراسلات)
-// ============================================================
 
+// ============================================================
+// 4. MODAL LOGIC (تحريك وفتح وإغلاق نافذة تسجيل المراسلات)
+// ============================================================
 const modal = document.getElementById('correspondenceModal');
 const btnOpenModal = document.querySelector('.btn-add');
 const formNewCorrespondence = document.getElementById('formNewCorrespondence');
 
-// فتح المودال عند الضغط على زر "+ تسجيل مراسلة جديدة"
 if (btnOpenModal && modal) {
     btnOpenModal.addEventListener('click', function() {
-        modal.style.display = 'flex'; // إظهار النافذة
+        modal.style.display = 'flex'; 
     });
 }
 
-// دالة إغلاق المودال (كتخدم مع زر X وزر إلغاء)
 function closeModal() {
     const modal = document.getElementById('correspondenceModal');
     if (modal) {
-        modal.style.display = 'none'; // إخفاء النافذة
-        if(formNewCorrespondence) formNewCorrespondence.reset(); // مسح البيانات المدخلة تلقائياً
+        modal.style.display = 'none'; 
+        if(formNewCorrespondence) formNewCorrespondence.reset(); 
     }
 }
 
-// إغلاق المودال تلقائياً لو المستخدم كليكا خارج الإطار الأبيض
-window.addEventListener('click', function(e) {
-    if (e.target === modal) {
-        closeModal();
-    }
-});
+if (modal) {
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+}
 
-// التعامل مع إرسال الفورم (Submit)
 if (formNewCorrespondence) {
     formNewCorrespondence.addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('✅ تم تسجيل المراسلة بنجاح وحفظها في النظام!');
-        closeModal(); // إغلاق النافذة بعد الحفظ
+        
+        // إشعار عصري عند حفظ المراسلة بنجاح
+        showToast('تم تسجيل المراسلة بنجاح وحفظها في الأرشيف الآمن!', 'success');
+        
+        closeModal(); 
     });
 }

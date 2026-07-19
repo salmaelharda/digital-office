@@ -1078,3 +1078,88 @@ tbody td {
         transform: translateY(0);
     }
 }
+/* ============================================================
+   9. MODERN TOAST NOTIFICATIONS (تنسيق الإشعارات العلوية العصرية)
+   ============================================================ */
+
+.custom-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* سنترة الإشعار فالوسط بالضبط الفوق */
+    padding: 12px 28px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100000; /* يظهر فوق المودال وفوق كلشي */
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    direction: rtl; /* متناسق مع اللغة العربية */
+    
+    /* الحركة عند الظهور: كيهبط بسلاسة من الفوق */
+    animation: slideDownToast 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: all 0.3s ease;
+}
+
+/* حالة إشعار النجاح (الأخضر الباهت العصري بحال الصورة 12) */
+.toast-success {
+    background-color: #e6f4ea; 
+    color: #137333;
+    border: 1px solid rgba(22, 163, 74, 0.2);
+}
+.toast-success .toast-icon {
+    color: #15803d;
+}
+
+/* حالة إشعار الخطأ (الأحمر/الوردي الباهت بحال الصورة 11 و 13) */
+.toast-error {
+    background-color: #fce8e6;
+    color: #c5221f;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+.toast-error .toast-icon {
+    color: #b91c1c;
+}
+
+/* تنسيق الأيقونة المرافقة للإشعار */
+.toast-icon {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.toast-text {
+    line-height: 1.4;
+}
+
+/* كلاس كيتزاد بالـ JS باش يختفي الإشعار بسلاسة للفوق */
+.custom-toast.hide {
+    animation: slideUpToast 0.3s ease forwards;
+}
+
+/* أنيميشن الهبوط من الأعلى */
+@keyframes slideDownToast {
+    from {
+        top: -60px;
+        opacity: 0;
+    }
+    to {
+        top: 25px;
+        opacity: 1;
+    }
+}
+
+/* أنيميشن الصعود عند الاختفاء */
+@keyframes slideUpToast {
+    from {
+        top: 25px;
+        opacity: 1;
+    }
+    to {
+        top: -60px;
+        opacity: 0;
+    }
+}
