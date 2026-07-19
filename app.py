@@ -1,3 +1,20 @@
+import subprocess
+import sys
+
+# ============================================================
+# AUTOMATIC PIP INSTALLER (تثبيت المكتبات تلقائياً عند التشغيل)
+# ============================================================
+try:
+    import flask
+    import flask_sqlalchemy
+except ImportError:
+    print("⏳ جاري تثبيت Flask و Flask-SQLAlchemy تلقائياً... انتظر لحظة...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "flask", "flask-sqlalchemy"])
+    print("✅ تم التثبيت بنجاح! جاري تشغيل السيرفر الآن...")
+
+# ============================================================
+# MAIN FLASK APPLICATION (كود السيرفر الرئيسي)
+# ============================================================
 import os
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
@@ -5,24 +22,22 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-# ==========================================
-# 1. CONFIGURATIONS (إعدادات السيرفر والملفات)
-# ==========================================
+# إعدادات السيرفر وقاعدة البيانات ومجلد الملفات
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'database.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR, 'uploads')
 
-# إنشاء مجلد uploads تلقائياً لتخزين ملفات الـ PDF والصور
+# إنشاء مجلد الـ uploads تلقائياً إذا كان غير موجود
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
 db = SQLAlchemy(app)
 
 
-# ==========================================
-# 2. DATABASE MODELS (جداول قاعدة البيانات)
-# ==========================================
+# ============================================================
+# DATABASE MODELS (جداول قاعدة البيانات)
+# ============================================================
 
 # جدول المراسلات الواردة
 class Arrivee(db.Model):
@@ -45,9 +60,9 @@ class Depart(db.Model):
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
 
 
-# ==========================================
-# 3. ROUTES & PAGES (المسارات والتحكم)
-# ==========================================
+# ============================================================
+# ROUTES & PAGES (المسارات والتحكم ف الصفحات)
+# ============================================================
 
 # 1. صفحة تسجيل الدخول (الرئيسية)
 @app.route('/')
@@ -65,7 +80,7 @@ def arrivee():
     courriers = Arrivee.query.order_by(Arrivee.id.desc()).all()
     return render_template('arrivee.html', courriers=courriers)
 
-# 4. استقبال وحفظ مراسلة واردة جديدة
+# 4. استقبال وحفظ مراسلة واردة جديدة ف الـ DB
 @app.route('/add_arrivee', methods=['POST'])
 def add_arrivee():
     expediteur = request.form.get('expediteur')
@@ -96,7 +111,7 @@ def depart():
     courriers = Depart.query.order_by(Depart.id.desc()).all()
     return render_template('depart.html', courriers=courriers)
 
-# 6. استقبال وحفظ مراسلة صادرة جديدة
+# 6. استقبال وحفظ مراسلة صادرة جديدة ف الـ DB
 @app.route('/add_depart', methods=['POST'])
 def add_depart():
     destinataire = request.form.get('destinataire')
@@ -126,17 +141,17 @@ def add_depart():
 def archive():
     return render_template('archive.html')
 
-# 8. مسار خاص وبأمان باش يقدر المتصفح يحمل ويفتح ملفات الـ PDF لي ترفعو
+# 8. مسار آمن لفتح وتحميل ملفات الـ PDF المرفوعة
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
-# ==========================================
-# 4. START SERVER (تشغيل وإنشاء قاعدة البيانات)
-# ==========================================
+# ============================================================
+# RUN SERVER (إنشاء الجداول وتشغيل السيرفر)
+# ============================================================
 with app.app_context():
-    db.create_all() # صاوب ملف database.db والجداول تلقائياً يلا مكانوش
+    db.create_all() # صاوب ملف database.db تلقائياً إلا مكانش
 
 if __name__ == '__main__':
     app.run(debug=True)
