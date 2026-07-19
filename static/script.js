@@ -1,26 +1,20 @@
 // ============================================================
-// 1. CUSTOM TOAST NOTIFICATION ENGINE (نظام الإشعارات العصرية الجديد)
+// 1. CUSTOM TOAST NOTIFICATION ENGINE
 // ============================================================
 function showToast(message, type = 'success') {
-    // 1. إنشاء عنصر الإشعار
     const toast = document.createElement('div');
     toast.className = `custom-toast toast-${type}`;
-    
-    // 2. اختيار الأيقونة المناسبة حسب النوع (نجاح أو خطأ)
     const icon = type === 'success' 
         ? '<i class="fas fa-check-circle"></i>' 
         : '<i class="fas fa-exclamation-circle"></i>';
     
-    // 3. تركيب محتوى الإشعار (الكتابة على اليمين والأيقونة حداها)
     toast.innerHTML = `
         <span class="toast-text">${message}</span>
         <span class="toast-icon">${icon}</span>
     `;
     
-    // 4. إضافة الإشعار لصفحة الـ HTML
     document.body.appendChild(toast);
     
-    // 5. حذفه تلقائياً بعد 3.5 ثواني مع حركة اختفاء ناعمة
     setTimeout(() => {
         toast.classList.add('hide');
         toast.addEventListener('animationend', () => {
@@ -29,9 +23,8 @@ function showToast(message, type = 'success') {
     }, 3500);
 }
 
-
 // ============================================================
-// 2. AUTHENTICATION LOGIC (تسجيل الدخول والإنشاء)
+// 2. AUTHENTICATION LOGIC
 // ============================================================
 const tabs = document.querySelectorAll('.tab');
 const loginForm = document.getElementById('loginForm');
@@ -53,34 +46,25 @@ if (tabs.length > 0 && loginForm && signupForm) {
         });
     });
 
-      setTimeout(() => {
-            window.location.href = '/dashboard'; // <--- هادي هي اللي صحيحة
-        }, 1200);
-
     signupForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
         showToast('تم إنشاء الحساب بنجاح! يمكنك الدخول الآن.', 'success');
-        
         if(tabs[0]) tabs[0].click();
     });
 }
 
-
 // ============================================================
-// 3. GLOBAL & SIDEBAR LOGIC (تسجيل الخروج)
+// 3. GLOBAL & SIDEBAR LOGIC
 // ============================================================
 function logout() {
     showToast('تم تسجيل الخروج بنجاح. رافقتك السلامة!', 'success');
-    
     setTimeout(() => {
-        window.location.href = 'index.html'; 
+        window.location.href = '/'; 
     }, 1200);
 }
 
-
 // ============================================================
-// 4. MODAL LOGIC (تحريك وفتح وإغلاق نافذة تسجيل المراسلات)
+// 4. MODAL LOGIC
 // ============================================================
 const modal = document.getElementById('correspondenceModal');
 const btnOpenModal = document.querySelector('.btn-add');
@@ -108,52 +92,49 @@ if (modal) {
     });
 }
 
-// تعويض الجزء الأخير الخاص بالـ Submit فـ script.js بهاد الكود الديناميكي:
+// ============================================================
+// 5. FORM SUBMISSION (Dynamic)
+// ============================================================
 if (formNewCorrespondence) {
     formNewCorrespondence.addEventListener('submit', function(e) {
-        e.preventDefault(); // منع الصفحة من الريفريش التلقائي
-        
-        // تجميع البيانات الحقيقية من الفورم
+        e.preventDefault();
         const formData = new FormData(formNewCorrespondence);
-        
-        // اللعبة الذكية: كيقرا الـ action من الـ HTML نيشان (/add_arrivee أو /add_depart)
         const targetUrl = formNewCorrespondence.getAttribute('action');
         
-        // إرسال البيانات للبايثون ديناميكياً
         fetch(targetUrl, {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                showToast(data.message, 'success'); // الإشعار العصري ديالك
-                closeModal(); // شد النافذة
-                
-                // إعادة تحميل الصفحة مورا ثانية باش تظهر المراسلة الجديدة فالجدول تلقائياً
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1200);
-            }
+        .then(() => {
+            showToast('تمت العملية بنجاح!', 'success');
+            closeModal();
+            setTimeout(() => { window.location.reload(); }, 1000);
         })
         .catch(error => {
-            showToast('حدث خطأ أثناء تسجيل المراسلة!', 'error');
+            showToast('حدث خطأ أثناء التسجيل!', 'error');
             console.error('Error:', error);
         });
     });
 }
+
+// ============================================================
+// 6. DELETE ITEM LOGIC (Compatible with POST)
+// ============================================================
 function deleteItem(url, element) {
     if (confirm('واش متأكدة بغيتي تمسحي هاد المراسلة؟')) {
-        fetch(url, { method: 'GET' })
+        fetch(url, { method: 'POST' })
         .then(response => {
             if (response.ok) {
-                // هاد السطر كيحذف السطر من الجدول مباشرة فالمتصفح
-                element.closest('tr').remove();
+                const parent = element.closest('tr') || element.closest('.result-item');
+                if (parent) parent.remove();
                 showToast('تم الحذف بنجاح!', 'success');
             } else {
                 showToast('وقع خطأ أثناء الحذف', 'error');
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            showToast('وقع خطأ تقني', 'error');
+        });
     }
 }

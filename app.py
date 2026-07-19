@@ -1,22 +1,13 @@
-import subprocess
-import sys
-
-# ============================================================
-# AUTOMATIC PIP INSTALLER
-# ============================================================
-try:
-    import flask
-    import flask_sqlalchemy
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "flask", "flask-sqlalchemy"])
-
 import os
+import sys
+import subprocess
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
+# إعدادات القاعدة البيانات
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'database.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -55,19 +46,11 @@ class Depart(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/login', methods=['POST'])
-def login():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    if username == "admin" and password == "1234":
-        return redirect(url_for('dashboard'))
-    else:
-        return "بيانات الدخول غير صحيحة، حاول مجدداً."
-
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
 
+# --- المراسلات الواردة ---
 @app.route('/arrivee')
 def arrivee():
     courriers = Arrivee.query.order_by(Arrivee.id.desc()).all()
@@ -88,8 +71,16 @@ def add_arrivee():
     )
     db.session.add(new_courrier)
     db.session.commit()
+    return redirect(url_for('arrivee'))
+
+@app.route('/delete_arrivee/<int:id>', methods=['POST'])
+def delete_arrivee(id):
+    courrier = Arrivee.query.get_or_404(id)
+    db.session.delete(courrier)
+    db.session.commit()
     return jsonify({"status": "success"})
 
+# --- المراسلات الصادرة ---
 @app.route('/depart')
 def depart():
     courriers = Depart.query.order_by(Depart.id.desc()).all()
@@ -110,41 +101,30 @@ def add_depart():
     )
     db.session.add(new_courrier)
     db.session.commit()
+    return redirect(url_for('depart'))
+
+@app.route('/delete_depart/<int:id>', methods=['POST'])
+def delete_depart(id):
+    courrier = Depart.query.get_or_404(id)
+    db.session.delete(courrier)
+    db.session.commit()
     return jsonify({"status": "success"})
 
+# --- الأرشيف ---
 @app.route('/archive')
 def archive():
-    return render_template('archive.html')
+    # هنا كنجيبو كاع البيانات للأرشيف
+    arrivee_results = Arrivee.query.all()
+    depart_results = Depart.query.all()
+    return render_template('archive.html', arrivee_results=arrivee_results, depart_results=depart_results)
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+# تهيئة قاعدة البيانات وتشغيل التطبيق
 with app.app_context():
     db.create_all()
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-@app.route('/delete_arrivee/<int:id>')
-def delete_arrivee(id):
-    courrier = Arrivee.query.get_or_404(id)
-    db.session.delete(courrier)
-    db.session.commit()
-    return redirect(url_for('arrivee'))
-
-# لحذف المراسلات الصادرة
-@app.route('/delete_depart/<int:id>')
-def delete_depart(id):
-    courrier = Depart.query.get_or_404(id)
-    db.session.delete(courrier)
-    db.session.commit()
-    return redirect(url_for('depart'))
-
-# لحذف المراسلات من الأرشيف
-@app.route('/delete_archive/<int:id>')
-def delete_archive(id):
-    courrier = Archive.query.get_or_404(id)
-    db.session.delete(courrier)
-    db.session.commit()
-    return redirect(url_for('archive'))
