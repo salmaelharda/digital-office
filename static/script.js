@@ -53,17 +53,9 @@ if (tabs.length > 0 && loginForm && signupForm) {
         });
     });
 
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // هنا استعملنا الإشعار العصري الجديد للنجاح
-        showToast('مرحباً بعودتك! تم تسجيل الدخول بنجاح.', 'success');
-        
-        // توجيه المستخدم بعد ثانية واحدة باش يلحق يشوف الإشعار الزوين
-        setTimeout(() => {
-            window.location.href = 'dashboard.html'; 
+      setTimeout(() => {
+            window.location.href = '/dashboard'; // <--- هادي هي اللي صحيحة
         }, 1200);
-    });
 
     signupForm.addEventListener('submit', function(e) {
         e.preventDefault();
