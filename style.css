@@ -911,3 +911,170 @@ tbody td {
         grid-template-columns: 1fr;
     }
 }
+/* ============================================================
+   8. MODAL POPUP STYLES (تنسيق النافذة المنبثقة للتسجيل الجديد)
+   ============================================================ */
+
+/* غطاء الخلفية اللي كيغطي الشاشة كاملة وكيضلمها */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.4); /* تعتيم ناعم وعصري */
+    backdrop-filter: blur(4px); /* ضبابية خفيفة للخلفية بحال الصورة */
+    display: none; /* مخفي تلقائياً وكيظهر بالـ JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* باش يجي فوق كولشي */
+    padding: 20px;
+}
+
+/* الكارد الأبيض الرئيسي للنافذة */
+.modal-container {
+    background: #ffffff;
+    width: 540px;
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 30px;
+    animation: fadeInModal 0.3s ease-out;
+}
+
+/* الرأس: العنوان وعلامة X */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.btn-close-x {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.btn-close-x:hover {
+    color: #64748b;
+}
+
+/* مجموعات الحقول */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+    text-align: right;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #475569;
+}
+
+/* تنسيق الـ inputs والـ textarea بحال الصورة بالظبط */
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    color: #0f172a;
+    outline: none;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: #0a4387;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(10, 67, 135, 0.08);
+}
+
+/* تنسيق حقل رفع الملفات الاحترافي */
+.file-input {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 13px;
+    color: #64748b;
+    background: #f8fafc;
+    border: 1.5px dashed #cbd5e1;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* سطر الأزرار التحتاني */
+.modal-footer {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+    flex-direction: row-reverse; /* باش يجي تسجيل على اليمين وإلغاء على اليسار */
+}
+
+/* زر تسجيل الأزرق العريض */
+.btn-modal-submit {
+    flex: 1; /* كياخد المساحة الكبيرة المتبقية */
+    height: 46px;
+    background: linear-gradient(90deg, #05234d 0%, #0a4387 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-modal-submit:hover {
+    opacity: 0.95;
+}
+
+/* زر إلغاء الأبيض الصغير */
+.btn-modal-cancel {
+    width: 80px;
+    height: 46px;
+    background: #ffffff;
+    color: #64748b;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-modal-cancel:hover {
+    background: #f8fafc;
+    color: #334155;
+}
+
+/* أنيميشن دخول النافذة بسلاسة */
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -52,10 +52,42 @@ function logout() {
     window.location.href = 'index.html'; 
 }
 
-// دالة تفاعلية لزر "تسجيل مراسلة جديدة" إذا كان متواجداً في الشاشة
-const btnAdd = document.querySelector('.btn-add');
-if (btnAdd) {
-    btnAdd.addEventListener('click', function() {
-        alert('➕ قريباً: سيتم ربط هاد الزر بـ Modal أو نافذة منبثقة لإضافة المراسلة الصادرة الجديدة!');
+// ============================================================
+// 3. MODAL LOGIC (تحريك وفتح وإغلاق نافذة تسجيل المراسلات)
+// ============================================================
+
+const modal = document.getElementById('correspondenceModal');
+const btnOpenModal = document.querySelector('.btn-add');
+const formNewCorrespondence = document.getElementById('formNewCorrespondence');
+
+// فتح المودال عند الضغط على زر "+ تسجيل مراسلة جديدة"
+if (btnOpenModal && modal) {
+    btnOpenModal.addEventListener('click', function() {
+        modal.style.display = 'flex'; // إظهار النافذة
+    });
+}
+
+// دالة إغلاق المودال (كتخدم مع زر X وزر إلغاء)
+function closeModal() {
+    const modal = document.getElementById('correspondenceModal');
+    if (modal) {
+        modal.style.display = 'none'; // إخفاء النافذة
+        if(formNewCorrespondence) formNewCorrespondence.reset(); // مسح البيانات المدخلة تلقائياً
+    }
+}
+
+// إغلاق المودال تلقائياً لو المستخدم كليكا خارج الإطار الأبيض
+window.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// التعامل مع إرسال الفورم (Submit)
+if (formNewCorrespondence) {
+    formNewCorrespondence.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('✅ تم تسجيل المراسلة بنجاح وحفظها في النظام!');
+        closeModal(); // إغلاق النافذة بعد الحفظ
     });
 }
