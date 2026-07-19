@@ -307,3 +307,426 @@ body {
         font-size: 26px;
     }
 }
+/* ============================================================
+   5. DASHBOARD & INTERFACES LAYOUT (واجهة المراسلات الصادرة)
+   ============================================================ */
+
+/* الحاوية الرئيسية كتقسم الشاشة بين السايدبار والمحتوى */
+.app {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f4f7fc;
+}
+
+/* --- الـ Sidebar (الجهة الزرقاء على اليمين) --- */
+.sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #051937 0%, #082f63 50%, #0b3c7a 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 35px 20px;
+    flex-shrink: 0;
+}
+
+.sidebar .logo {
+    margin-bottom: 35px;
+    padding-right: 10px;
+}
+
+.sidebar .logo h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.sidebar .logo span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+    margin-top: -2px;
+}
+
+/* القائمة الجانبية وتأثير العنصر النشط (Active) */
+.sidebar nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav ul li a i {
+    font-size: 16px;
+    width: 20px;
+}
+
+.sidebar nav ul li a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ستايل الخيار النشط بحال الصورة بالظبط */
+.sidebar nav ul li.active a {
+    color: #ffffff;
+    background: linear-gradient(90deg, rgba(11, 60, 122, 0.9) 0%, rgba(30, 66, 159, 0.4) 100%);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+/* بطاقة المستخدم للي لتحت */
+.user-card {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 20px;
+}
+
+.user-card p {
+    font-size: 13px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.user-card p i {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.user-card span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+    padding-right: 24px;
+    margin-top: 2px;
+}
+
+/* زر تسجيل الخروج */
+.user-card button {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+    padding: 5px 0;
+    transition: color 0.2s;
+    width: 100%;
+}
+
+.user-card button:hover {
+    color: #f87171;
+}
+
+/* --- جهة المحتوى الرئيسي (Main) --- */
+.main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background: linear-gradient(180deg, #f0f4f9 0%, #e2eaf4 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* الهيدر العلوي */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #051937;
+}
+
+.top-bar p {
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+/* زر "+ تسجيل مراسلة جديدة" بالتدرج الاحترافي */
+.btn-add {
+    background: linear-gradient(90deg, #05234d 0%, #0a4387 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(5, 35, 77, 0.15);
+    transition: all 0.2s ease;
+}
+
+.btn-add:hover {
+    background: linear-gradient(90deg, #031733 0%, #073369 100%);
+    box-shadow: 0 6px 16px rgba(5, 35, 77, 0.25);
+}
+
+/* صندوق البحث العريض */
+.search-box {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 54px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+    border: 1.5px solid #e2e8f0;
+}
+
+.search-box i {
+    color: #94a3b8;
+    font-size: 16px;
+    margin-left: 14px;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    color: #0f172a;
+    background: transparent;
+}
+
+.search-box input::placeholder {
+    color: #94a3b8;
+}
+
+/* كارد الجدول (White Card) */
+.table-wrapper {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+}
+
+/* ترويسة الجدول الباهتة والأنيقة */
+thead th {
+    background-color: #f8fafc;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+tbody td {
+    padding: 18px 20px;
+    font-size: 14px;
+    color: #0f172a;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* حالة عدم وجود بيانات (ملمومة بحال الصورة) */
+.empty-row {
+    text-align: center;
+    padding: 50px 0 !important;
+    color: #94a3b8;
+    background: #ffffff;
+}
+
+.empty-row p {
+    font-size: 14px;
+    font-weight: 600;
+}
+/* ============================================================
+   6. DASHBOARD CARDS & STATS SPECIFIC (إحصائيات لوحة التحكم)
+   ============================================================ */
+
+/* شبكة الكارتات الأربعة متجاوبة */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+/* التنسيق العام للكارد الإحصائي */
+.stat-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 160px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* الدوائر الملونة الباهتة خلف الكارتات بحال الصورة */
+.card-circle-accent {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    top: -20px;
+    right: -20px; /* في اتجاه RTL الدائرة كتكون فالبدية من الجنب */
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* السطر العلوي للكارد (فيه البادج والأيقونة) */
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* البادج المئوي المستقر */
+.badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+.badge-blue { background-color: #e0f2fe; color: #0369a1; }
+.badge-green { background-color: #dcfce7; color: #15803d; }
+
+/* صندوق الأيقونة الدائري والمغلوق */
+.stat-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* تخصيص الألوان لكل كارد */
+.card-incoming .card-circle-accent { background: #dbeafe; right: auto; left: -20px; }
+.icon-blue { background: #0284c7; }
+
+.card-outgoing .card-circle-accent { background: #dcfce7; right: auto; left: -20px; }
+.icon-green { background: #10b981; }
+
+.card-pending .card-circle-accent { background: #ffedd5; right: auto; left: -20px; }
+.icon-orange { background: #f59e0b; }
+
+.card-total .card-circle-accent { background: #f1f5f9; right: auto; left: -20px; }
+.icon-navy { background: #0f172a; }
+
+/* السطر السفلي للكارد (فيه الرقم والاسم) */
+.card-body-row {
+    text-align: left; /* الأرقام والكتابة ليمين الكارد متناسقة */
+    position: relative;
+    z-index: 2;
+}
+
+.stat-number {
+    font-size: 34px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+/* الكارد الكبير السفلي */
+.dashboard-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    width: 100%;
+}
+
+.dashboard-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+/* حالة جدول فارغ بلوحة التحكم */
+.empty-dashboard-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    color: #94a3b8;
+}
+
+.empty-icon-wrapper {
+    font-size: 48px;
+    color: #cbd5e1;
+    margin-bottom: 15px;
+}
+
+.empty-dashboard-state p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* توافق الشاشات الصغيرة للتابليت والهواتف */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -2,13 +2,20 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>لوحة التحكم - مكتب الضبط الرقمي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    
+    <!-- ربط خط Tajawal لتوحيد الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="app">
-        <!-- Sidebar -->
+        <!-- القائمة الجانبية (Sidebar) -->
         <aside class="sidebar">
             <div class="logo">
                 <h3>مكتب الضبط</h3>
@@ -29,45 +36,80 @@
             </div>
         </aside>
 
-        <!-- Main -->
+        <!-- المحتوى الرئيسي (Main Content) -->
         <main class="main">
             <header class="top-bar">
-                <h1>لوحة التحكم</h1>
-                <p>نظرة عامة على المراسلات ونشاط المكتب</p>
+                <div class="top-bar-text">
+                    <h1>لوحة التحكم</h1>
+                    <p>نظرة عامة على المراسلات ونشاط المكتب</p>
+                </div>
             </header>
 
-            <div class="stats">
-                <div class="stat-box">
-                    <div class="stat-icon"><i class="fas fa-envelope"></i></div>
-                    <div>
-                        <h3>المراسلات الواردة</h3>
-                        <p class="stat-number">0</p>
-                        <small>المجموع الكلي</small>
+            <!-- الكارتات الأربعة الإحصائية (مطابقة للصورة 14) -->
+            <div class="stats-grid">
+                
+                <!-- الكارد 1: المراسلات الواردة -->
+                <div class="stat-card card-incoming">
+                    <div class="card-circle-accent"></div>
+                    <div class="card-header-row">
+                        <span class="badge badge-blue">12%+ ↗</span>
+                        <div class="stat-icon-box icon-blue"><i class="fas fa-inbox"></i></div>
+                    </div>
+                    <div class="card-body-row">
+                        <h2 class="stat-number">0</h2>
+                        <p class="stat-label">المراسلات الواردة</p>
                     </div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-icon"><i class="fas fa-envelope-open-text"></i></div>
-                    <div>
-                        <h3>المراسلات الصادرة</h3>
-                        <p class="stat-number">0</p>
-                        <small>المجموع الكلي</small>
+
+                <!-- الكارد 2: المراسلات الصادرة -->
+                <div class="stat-card card-outgoing">
+                    <div class="card-circle-accent"></div>
+                    <div class="card-header-row">
+                        <span class="badge badge-green">8%+ ↗</span>
+                        <div class="stat-icon-box icon-green"><i class="fas fa-paper-plane"></i></div>
+                    </div>
+                    <div class="card-body-row">
+                        <h2 class="stat-number">0</h2>
+                        <p class="stat-label">المراسلات الصادرة</p>
                     </div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
-                    <div>
-                        <h3>قيد الانتظار</h3>
-                        <p class="stat-number">0</p>
-                        <small>في انتظار المعالجة</small>
+
+                <!-- الكارد 3: قيد الانتظار -->
+                <div class="stat-card card-pending">
+                    <div class="card-circle-accent"></div>
+                    <div class="card-header-row">
+                        <div></div> <!-- مساحة فارغة لتعويض البادج -->
+                        <div class="stat-icon-box icon-orange"><i class="fas fa-clock"></i></div>
+                    </div>
+                    <div class="card-body-row">
+                        <h2 class="stat-number">0</h2>
+                        <p class="stat-label">قيد الانتظار</p>
                     </div>
                 </div>
+
+                <!-- الكارد 4: المجموع الكلي -->
+                <div class="stat-card card-total">
+                    <div class="card-circle-accent"></div>
+                    <div class="card-header-row">
+                        <div></div>
+                        <div class="stat-icon-box icon-navy"><i class="fas fa-check-double"></i></div>
+                    </div>
+                    <div class="card-body-row">
+                        <h2 class="stat-number">0</h2>
+                        <p class="stat-label">المجموع الكلي</p>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Chart (fake) -->
-            <div class="chart-card">
-                <h3><i class="fas fa-chart-line"></i> إحصائيات الشهر</h3>
-                <div class="chart-placeholder">
-                    <span>📊 [رسم بياني تفاعلي هنا]</span>
+            <!-- كارد آخر المراسلات الواردة (الحالة الفارغة بحال الصورة) -->
+            <div class="dashboard-card">
+                <h3>آخر المراسلات الواردة</h3>
+                <div class="empty-dashboard-state">
+                    <div class="empty-icon-wrapper">
+                        <i class="opacity-box fas fa-box-open"></i>
+                    </div>
+                    <p>لا توجد مراسلات مسجلة بعد</p>
                 </div>
             </div>
         </main>
