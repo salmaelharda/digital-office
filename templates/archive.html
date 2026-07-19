@@ -49,7 +49,8 @@
                         {% for courrier in arrivee_results %}
                         <div class="result-item">
                             <span>{{ courrier.sujet }}</span>
-                            <a href="/delete_arrivee/{{ courrier.id }}" onclick="return confirm('حذف؟')" style="color:red">
+                            <!-- استعملنا الدالة deleteItem هنا -->
+                            <a href="#" onclick="deleteItem('/delete_arrivee/{{ courrier.id }}', this)" style="color:red">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </div>
@@ -66,7 +67,8 @@
                         {% for courrier in depart_results %}
                         <div class="result-item">
                             <span>{{ courrier.sujet }}</span>
-                            <a href="/delete_depart/{{ courrier.id }}" onclick="return confirm('حذف؟')" style="color:red">
+                            <!-- استعملنا الدالة deleteItem هنا -->
+                            <a href="#" onclick="deleteItem('/delete_depart/{{ courrier.id }}', this)" style="color:red">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </div>

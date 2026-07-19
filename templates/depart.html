@@ -91,12 +91,12 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    <!-- زر الحذف للصادر -->
-                                    <a href="/delete_depart/{{ courrier.id }}" 
-                                       style="color: red; font-size: 18px;" 
-                                       onclick="return confirm('واش متأكدة بغيتي تمسحي هاد المراسلة الصادرة؟')">
-                                       <i class="fas fa-trash"></i>
-                                    </a>
+                                    <!-- في ملف depart.html -->
+<a href="#" 
+   style="color: red; font-size: 18px;" 
+   onclick="deleteItem('/delete_depart/{{ courrier.id }}', this)">
+   <i class="fas fa-trash"></i>
+</a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -141,7 +141,8 @@
                 </div>
                 <div class="form-group">
                     <label>مرفق (PDF / صورة)</label>
-                    <input type="file" name="file" class="file-input">
+                    <input type="file"
+                     name="file" class="file-input">
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn-modal-submit">تسجيل</button>

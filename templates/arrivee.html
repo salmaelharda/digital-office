@@ -93,11 +93,12 @@
                                 </td>
                                 <td>
                                     <!-- زر الحذف -->
-                                    <a href="/delete_arrivee/{{ courrier.id }}" 
-                                       style="color: red; font-size: 18px;" 
-                                       onclick="return confirm('واش متأكدة بغيتي تمسحي هاد المراسلة؟')">
-                                       <i class="fas fa-trash"></i>
-                                    </a>
+                                    <!-- بدلي الرابط بـ onclick -->
+                                      <a href="#" 
+                                        style="color: red; font-size: 18px;" 
+                                         onclick="deleteItem('/delete_arrivee/{{ courrier.id }}', this)">
+                                               <i class="fas fa-trash"></i>
+                                      </a>
                                 </td>
                             </tr>
                             {% endfor %}

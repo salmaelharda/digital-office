@@ -142,3 +142,18 @@ if (formNewCorrespondence) {
         });
     });
 }
+function deleteItem(url, element) {
+    if (confirm('واش متأكدة بغيتي تمسحي هاد المراسلة؟')) {
+        fetch(url, { method: 'GET' })
+        .then(response => {
+            if (response.ok) {
+                // هاد السطر كيحذف السطر من الجدول مباشرة فالمتصفح
+                element.closest('tr').remove();
+                showToast('تم الحذف بنجاح!', 'success');
+            } else {
+                showToast('وقع خطأ أثناء الحذف', 'error');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
