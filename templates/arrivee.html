@@ -10,12 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
-    <!-- 1️⃣ التعديل الأول: ربط ملف الـ CSS باستعمال طريقة Flask الذكية -->
+    <!-- ربط ملف الـ CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
     <div class="app">
-        <!-- القائمة الجانبية (Sidebar) -->
+        <!-- القائمة الجانبية -->
         <aside class="sidebar">
             <div class="logo">
                 <h3>مكتب الضبط</h3>
@@ -53,7 +53,7 @@
                 <input type="text" placeholder="ابحث برقم المراسلة، الموضوع، أو الاسم...">
             </div>
 
-            <!-- 2️⃣ التعديل الثاني: عرض البيانات الحقيقية من قاعدة البيانات باستعمال بايثون -->
+            <!-- جدول البيانات -->
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -64,25 +64,26 @@
                             <th>الموضوع</th>
                             <th>القسم / المصلحة</th>
                             <th>المرفق</th>
+                            <th>إجراءات</th> <!-- عمود الحذف -->
                         </tr>
                     </thead>
                     <tbody id="arriveeBody">
-                        <!-- هنا بايثون كيشوف واش كاينين مراسلات ف قاعدة البيانات -->
                         {% if courriers %}
                             {% for courrier in courriers %}
                             <tr>
                                 <td><strong>{{ courrier.id }}</strong></td>
-                                <td>{% if courrier.date_created %}
-    {{ courrier.date_created.strftime('%Y-%m-%d') }}
-{% else %}
-    لا يوجد تاريخ
-{% endif %}</td>
+                                <td>
+                                    {% if courrier.date_created %}
+                                        {{ courrier.date_created.strftime('%Y-%m-%d') }}
+                                    {% else %}
+                                        لا يوجد تاريخ
+                                    {% endif %}
+                                </td>
                                 <td>{{ courrier.expediteur }}</td>
                                 <td>{{ courrier.sujet }}</td>
                                 <td><span class="badge badge-blue">{{ courrier.division }}</span></td>
                                 <td>
                                     {% if courrier.file_path %}
-                                        <!-- زر تحميل الملف الحقيقي -->
                                         <a href="/uploads/{{ courrier.file_path }}" target="_blank" style="color: #0284c7; font-size: 16px;">
                                             <i class="fas fa-file-pdf"></i>
                                         </a>
@@ -90,12 +91,19 @@
                                         <span style="color: #94a3b8;">لا يوجد</span>
                                     {% endif %}
                                 </td>
+                                <td>
+                                    <!-- زر الحذف -->
+                                    <a href="/delete_arrivee/{{ courrier.id }}" 
+                                       style="color: red; font-size: 18px;" 
+                                       onclick="return confirm('واش متأكدة بغيتي تمسحي هاد المراسلة؟')">
+                                       <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                             {% endfor %}
                         {% else %}
-                            <!-- يلا كانت قاعدة البيانات خاوية غايطلع هاد السطر تلقائياً -->
                             <tr>
-                                <td colspan="6" class="empty-row">
+                                <td colspan="7" class="empty-row">
                                     <div style="font-size: 40px; color: #cbd5e1; margin-bottom: 10px;">
                                         <i class="fas fa-box-open"></i>
                                     </div>
@@ -109,41 +117,34 @@
         </main>
     </div>
 
-    <!-- النافذة المنبثقة (Modal) -->
+    <!-- النافذة المنبثقة -->
     <div id="correspondenceModal" class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
                 <h2>مراسلة جديدة</h2>
                 <button class="btn-close-x" onclick="closeModal()">&times;</button>
             </div>
-            
-            <!-- 3️⃣ التعديل الثالث: زدنا الحقول name المطابقة لـ app.py وزدنا الـ action -->
             <form id="formNewCorrespondence" action="/add_arrivee" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>المرسل (Expéditeur)</label>
                     <input type="text" name="expediteur" required placeholder="اسم الشخص أو المؤسسة المرسلة...">
                 </div>
-                
                 <div class="form-group">
                     <label>موضوع المراسلة</label>
                     <input type="text" name="sujet" required placeholder="اكتب موضوع المراسلة بالكامل...">
                 </div>
-                
                 <div class="form-group">
                     <label>القسم / المصلحة</label>
                     <input type="text" name="division" required placeholder="القسم أو المصلحة الموجه إليها...">
                 </div>
-                
                 <div class="form-group">
                     <label>ملاحظات (اختياري)</label>
                     <textarea name="notes" rows="4" placeholder="أدخل أية ملاحظات إضافية هنا..."></textarea>
                 </div>
-                
                 <div class="form-group">
                     <label>مرفق (PDF / صورة)</label>
                     <input type="file" name="file" class="file-input">
                 </div>
-                
                 <div class="modal-footer">
                     <button type="submit" class="btn-modal-submit">تسجيل</button>
                     <button type="button" class="btn-modal-cancel" onclick="closeModal()">إلغاء</button>
@@ -152,7 +153,6 @@
         </div>
     </div>
 
-    <!-- ربط ملف الـ JavaScript باستعمال طريقة Flask -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

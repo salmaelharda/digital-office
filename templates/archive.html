@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>الأرشيف والبحث - مكتب الضبط الرقمي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    
-    <!-- ربط خط Tajawal الموحد -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="app">
-        <!-- القائمة الجانبية (Sidebar) - الخيار النشط هنا هو الأرشيف والبحث -->
         <aside class="sidebar">
             <div class="logo">
                 <h3>مكتب الضبط</h3>
@@ -36,68 +32,47 @@
             </div>
         </aside>
 
-        <!-- المحتوى الرئيسي (Main Content) -->
         <main class="main">
             <header class="top-bar">
                 <div class="top-bar-text">
                     <h1>الأرشيف والبحث المتقدم</h1>
-                    <p>ابحث في جميع المراسلات القديمة بكلمات مفاتيح أو حسب التاريخ</p>
                 </div>
             </header>
 
-            <!-- كارد البحث المتقدم المنظم بحال الصورة 16 -->
-            <div class="archive-search-card">
-                <!-- السطر الأول: كلمة البحث -->
-                <div class="search-field-group">
-                    <label>كلمة البحث</label>
-                    <div class="archive-input-wrapper">
-                        <i class="fas fa-search search-icon-inside"></i>
-                        <input type="text" placeholder="رقم، موضوع، مرسل، مرسل إليه، أو ملاحظات...">
-                    </div>
-                </div>
-                
-                <!-- السطر الثاني: التواريخ وعداد النتائج -->
-                <div class="search-dates-row">
-                    <div class="date-input-group">
-                        <label>من تاريخ</label>
-                        <input type="date" placeholder="mm/dd/yyyy">
-                    </div>
-                    <div class="date-input-group">
-                        <label>إلى تاريخ</label>
-                        <input type="date" placeholder="mm/dd/yyyy">
-                    </div>
-                    <!-- عداد النتائج مشدود لأقصى اليسار تلقائياً -->
-                    <div class="results-counter-box">
-                        <span>عدد النتائج: <strong>0</strong></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- كارتات عرض نتائج البحث الجانبية (Side-by-Side) -->
             <div class="archive-results-grid">
-                
-                <!-- كارد نتائج المراسلات الواردة (الأزرق) -->
+                <!-- نتائج الواردة -->
                 <div class="archive-result-card">
                     <div class="card-result-header incoming-header">
-                        <i class="fas fa-inbox"></i>
-                        <h3>المراسلات الواردة <span>(0)</span></h3>
+                        <h3>المراسلات الواردة</h3>
                     </div>
                     <div class="card-result-body">
-                        <p>لا توجد نتائج</p>
+                        {% for courrier in arrivee_results %}
+                        <div class="result-item">
+                            <span>{{ courrier.sujet }}</span>
+                            <a href="/delete_arrivee/{{ courrier.id }}" onclick="return confirm('حذف؟')" style="color:red">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
 
-                <!-- كارد نتائج المراسلات الصادرة (الأخضر) -->
+                <!-- نتائج الصادرة -->
                 <div class="archive-result-card">
                     <div class="card-result-header outgoing-header">
-                        <i class="fas fa-paper-plane"></i>
-                        <h3>المراسلات الصادرة <span>(0)</span></h3>
+                        <h3>المراسلات الصادرة</h3>
                     </div>
                     <div class="card-result-body">
-                        <p>لا توجد نتائج</p>
+                        {% for courrier in depart_results %}
+                        <div class="result-item">
+                            <span>{{ courrier.sujet }}</span>
+                            <a href="/delete_depart/{{ courrier.id }}" onclick="return confirm('حذف؟')" style="color:red">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-
             </div>
         </main>
     </div>

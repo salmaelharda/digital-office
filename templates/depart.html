@@ -10,12 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
-    <!-- ربط ملف الـ CSS الموحد عن طريق Flask -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
     <div class="app">
-        <!-- القائمة الجانبية (Sidebar) - الخيار النشط هنا هو المراسلات الصادرة -->
+        <!-- القائمة الجانبية -->
         <aside class="sidebar">
             <div class="logo">
                 <h3>مكتب الضبط</h3>
@@ -53,7 +52,7 @@
                 <input type="text" placeholder="ابحث برقم المراسلة، الموضوع، أو الجهة...">
             </div>
 
-            <!-- عرض بيانات الصادر الحقيقية من قاعدة البيانات -->
+            <!-- الجدول مع عمود الإجراءات -->
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -64,6 +63,7 @@
                             <th>الموضوع</th>
                             <th>القسم / المصلحة</th>
                             <th>المرفق</th>
+                            <th>إجراءات</th>
                         </tr>
                     </thead>
                     <tbody id="departBody">
@@ -71,7 +71,13 @@
                             {% for courrier in courriers %}
                             <tr>
                                 <td><strong>{{ courrier.id }}</strong></td>
-                                <td>{{ courrier.date_created.strftime('%Y-%m-%d') }}</td>
+                                <td>
+                                    {% if courrier.date_created %}
+                                        {{ courrier.date_created.strftime('%Y-%m-%d') }}
+                                    {% else %}
+                                        لا يوجد تاريخ
+                                    {% endif %}
+                                </td>
                                 <td>{{ courrier.destinataire }}</td>
                                 <td>{{ courrier.sujet }}</td>
                                 <td><span class="badge badge-green" style="background-color: #e6f4ea; color: #137333; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;">{{ courrier.division }}</span></td>
@@ -84,11 +90,19 @@
                                         <span style="color: #94a3b8;">لا يوجد</span>
                                     {% endif %}
                                 </td>
+                                <td>
+                                    <!-- زر الحذف للصادر -->
+                                    <a href="/delete_depart/{{ courrier.id }}" 
+                                       style="color: red; font-size: 18px;" 
+                                       onclick="return confirm('واش متأكدة بغيتي تمسحي هاد المراسلة الصادرة؟')">
+                                       <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                             {% endfor %}
                         {% else %}
                             <tr>
-                                <td colspan="6" class="empty-row">
+                                <td colspan="7" class="empty-row">
                                     <div style="font-size: 40px; color: #cbd5e1; margin-bottom: 10px;">
                                         <i class="fas fa-box-open"></i>
                                     </div>
@@ -102,41 +116,33 @@
         </main>
     </div>
 
-    <!-- النافذة المنبثقة (Modal) الخاصة بالصادر -->
     <div id="correspondenceModal" class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
                 <h2>مراسلة جديدة</h2>
                 <button class="btn-close-x" onclick="closeModal()">&times;</button>
             </div>
-            
-            <!-- الـ action هنا كيمشي لـ /add_depart وحقل الإدخال الأول للمرسل إليه -->
             <form id="formNewCorrespondence" action="/add_depart" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>المرسل إليه (Destinataire)</label>
                     <input type="text" name="destinataire" required placeholder="اسم الجهة المرسل إليها...">
                 </div>
-                
                 <div class="form-group">
                     <label>موضوع المراسلة</label>
                     <input type="text" name="sujet" required placeholder="اكتب موضوع المراسلة بالكامل...">
                 </div>
-                
                 <div class="form-group">
                     <label>القسم / المصلحة</label>
                     <input type="text" name="division" required placeholder="القسم الصادرة منه المراسلة...">
                 </div>
-                
                 <div class="form-group">
                     <label>ملاحظات (اختياري)</label>
                     <textarea name="notes" rows="4" placeholder="أدخل أية ملاحظات إضافية هنا..."></textarea>
                 </div>
-                
                 <div class="form-group">
                     <label>مرفق (PDF / صورة)</label>
                     <input type="file" name="file" class="file-input">
                 </div>
-                
                 <div class="modal-footer">
                     <button type="submit" class="btn-modal-submit">تسجيل</button>
                     <button type="button" class="btn-modal-cancel" onclick="closeModal()">إلغاء</button>
@@ -145,7 +151,6 @@
         </div>
     </div>
 
-    <!-- ربط ملف الـ JavaScript الموحد عن طريق Flask -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

@@ -125,3 +125,26 @@ with app.app_context():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/delete_arrivee/<int:id>')
+def delete_arrivee(id):
+    courrier = Arrivee.query.get_or_404(id)
+    db.session.delete(courrier)
+    db.session.commit()
+    return redirect(url_for('arrivee'))
+
+# لحذف المراسلات الصادرة
+@app.route('/delete_depart/<int:id>')
+def delete_depart(id):
+    courrier = Depart.query.get_or_404(id)
+    db.session.delete(courrier)
+    db.session.commit()
+    return redirect(url_for('depart'))
+
+# لحذف المراسلات من الأرشيف
+@app.route('/delete_archive/<int:id>')
+def delete_archive(id):
+    courrier = Archive.query.get_or_404(id)
+    db.session.delete(courrier)
+    db.session.commit()
+    return redirect(url_for('archive'))
