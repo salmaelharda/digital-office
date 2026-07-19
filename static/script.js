@@ -118,23 +118,22 @@ if (formNewCorrespondence) {
 }
 
 // ============================================================
-// 6. DELETE ITEM LOGIC (Compatible with POST)
+// 6. DELETE ITEM LOGIC (Professional - Direct Action)
 // ============================================================
 function deleteItem(url, element) {
-    if (confirm('واش متأكدة بغيتي تمسحي هاد المراسلة؟')) {
-        fetch(url, { method: 'POST' })
-        .then(response => {
-            if (response.ok) {
-                const parent = element.closest('tr') || element.closest('.result-item');
-                if (parent) parent.remove();
-                showToast('تم الحذف بنجاح!', 'success');
-            } else {
-                showToast('وقع خطأ أثناء الحذف', 'error');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showToast('وقع خطأ تقني', 'error');
-        });
-    }
+    // تم حذف confirm لكي لا يظهر الميساج المزعج
+    fetch(url, { method: 'POST' })
+    .then(response => {
+        if (response.ok) {
+            const parent = element.closest('tr') || element.closest('.result-item');
+            if (parent) parent.remove();
+            showToast('تم حذف المراسلة بنجاح!', 'success');
+        } else {
+            showToast('وقع خطأ أثناء الحذف', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showToast('وقع خطأ تقني', 'error');
+    });
 }
