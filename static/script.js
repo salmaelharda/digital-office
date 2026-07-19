@@ -116,13 +116,37 @@ if (modal) {
     });
 }
 
+// تعويض الجزء الأخير الخاص بالـ Submit فـ script.js بهاد الكود الديناميكي:
 if (formNewCorrespondence) {
     formNewCorrespondence.addEventListener('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // منع الصفحة من الريفريش التلقائي
         
-        // إشعار عصري عند حفظ المراسلة بنجاح
-        showToast('تم تسجيل المراسلة بنجاح وحفظها في الأرشيف الآمن!', 'success');
+        // تجميع البيانات الحقيقية من الفورم
+        const formData = new FormData(formNewCorrespondence);
         
-        closeModal(); 
+        // اللعبة الذكية: كيقرا الـ action من الـ HTML نيشان (/add_arrivee أو /add_depart)
+        const targetUrl = formNewCorrespondence.getAttribute('action');
+        
+        // إرسال البيانات للبايثون ديناميكياً
+        fetch(targetUrl, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                showToast(data.message, 'success'); // الإشعار العصري ديالك
+                closeModal(); // شد النافذة
+                
+                // إعادة تحميل الصفحة مورا ثانية باش تظهر المراسلة الجديدة فالجدول تلقائياً
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1200);
+            }
+        })
+        .catch(error => {
+            showToast('حدث خطأ أثناء تسجيل المراسلة!', 'error');
+            console.error('Error:', error);
+        });
     });
 }
