@@ -730,3 +730,184 @@ tbody td {
         grid-template-columns: 1fr;
     }
 }
+/* ============================================================
+   7. ADVANCED ARCHIVE & SEARCH SPECIFIC (إعدادات صفحة الأرشيف)
+   ============================================================ */
+
+/* كارد البحث الكبير */
+.archive-search-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.search-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+}
+
+.search-field-group label, .date-input-group label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #334155;
+}
+
+/* صندوق الإدخال مع الأيقونة لداخل */
+.archive-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.archive-input-wrapper input {
+    width: 100%;
+    height: 48px;
+    padding: 0 45px 0 16px; /* مساحة للأيقونة على اليمين */
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.archive-input-wrapper input:focus {
+    border-color: #0284c7;
+}
+
+.search-icon-inside {
+    position: absolute;
+    right: 16px;
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+/* سطر التواريخ والعداد */
+.search-dates-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 25px;
+    width: 100%;
+}
+
+.date-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+    width: 220px;
+}
+
+.date-input-group input {
+    height: 44px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0 14px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    color: #334155;
+    outline: none;
+    width: 100%;
+}
+
+/* دفع عداد النتائج لأقصى اليسار في الـ RTL */
+.results-counter-box {
+    margin-right: auto; 
+    font-size: 14px;
+    color: #64748b;
+    padding-bottom: 12px;
+}
+
+.results-counter-box strong {
+    color: #0f172a;
+    font-weight: 800;
+}
+
+/* شبكة كروت النتائج التحتانية (جوج كروت حدا بعضياتهم) */
+.archive-results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.archive-result-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* هيدر الكارد */
+.card-result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.card-result-header i {
+    font-size: 20px;
+}
+
+.card-result-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* ألوان المراسلات الواردة (الأزرق التفاعلي) */
+.incoming-header i, .incoming-header h3 {
+    color: #0284c7;
+}
+
+/* ألوان المراسلات الصادرة (الأخضر التفاعلي) */
+.outgoing-header i, .outgoing-header h3 {
+    color: #10b981;
+}
+
+.card-result-header h3 span {
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* محتوى الحالة الفارغة لوسط كروت الأرشيف */
+.card-result-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* متوافق مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .search-dates-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .date-input-group {
+        width: 100%;
+    }
+    .results-counter-box {
+        margin-right: 0;
+        padding-bottom: 0;
+    }
+    .archive-results-grid {
+        grid-template-columns: 1fr;
+    }
+}

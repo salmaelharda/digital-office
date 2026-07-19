@@ -2,12 +2,20 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <title>الرئيسي والبحث</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الأرشيف والبحث - مكتب الضبط الرقمي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    
+    <!-- ربط خط Tajawal الموحد -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="app">
+        <!-- القائمة الجانبية (Sidebar) - الخيار النشط هنا هو الأرشيف والبحث -->
         <aside class="sidebar">
             <div class="logo">
                 <h3>مكتب الضبط</h3>
@@ -18,7 +26,7 @@
                     <li><a href="dashboard.html"><i class="fas fa-chart-pie"></i> لوحة التحكم</a></li>
                     <li><a href="arrivee.html"><i class="fas fa-inbox"></i> المراسلات الواردة</a></li>
                     <li><a href="depart.html"><i class="fas fa-paper-plane"></i> المراسلات الصادرة</a></li>
-                    <li class="active"><a href="archive.html"><i class="fas fa-search"></i> الرئيسي والبحث</a></li>
+                    <li class="active"><a href="archive.html"><i class="fas fa-search"></i> الأرشيف والبحث</a></li>
                 </ul>
             </nav>
             <div class="user-card">
@@ -28,32 +36,68 @@
             </div>
         </aside>
 
+        <!-- المحتوى الرئيسي (Main Content) -->
         <main class="main">
             <header class="top-bar">
-                <h1>الرئيسي والبحث المتقدم</h1>
-                <p>ابحث في جميع المراسلات القديمة بكلمات مفاتيح أو حسب التاريخ</p>
+                <div class="top-bar-text">
+                    <h1>الأرشيف والبحث المتقدم</h1>
+                    <p>ابحث في جميع المراسلات القديمة بكلمات مفاتيح أو حسب التاريخ</p>
+                </div>
             </header>
 
-            <div class="search-box">
-                <div class="search-row">
-                    <input type="text" placeholder="كلمة البحث... رقم، موضوع، مرسل، مرسل إليه، أو ملاحظات..." />
-                    <input type="date" />
-                    <input type="date" />
-                    <button><i class="fas fa-search"></i> بحث</button>
+            <!-- كارد البحث المتقدم المنظم بحال الصورة 16 -->
+            <div class="archive-search-card">
+                <!-- السطر الأول: كلمة البحث -->
+                <div class="search-field-group">
+                    <label>كلمة البحث</label>
+                    <div class="archive-input-wrapper">
+                        <i class="fas fa-search search-icon-inside"></i>
+                        <input type="text" placeholder="رقم، موضوع، مرسل، مرسل إليه، أو ملاحظات...">
+                    </div>
+                </div>
+                
+                <!-- السطر الثاني: التواريخ وعداد النتائج -->
+                <div class="search-dates-row">
+                    <div class="date-input-group">
+                        <label>من تاريخ</label>
+                        <input type="date" placeholder="mm/dd/yyyy">
+                    </div>
+                    <div class="date-input-group">
+                        <label>إلى تاريخ</label>
+                        <input type="date" placeholder="mm/dd/yyyy">
+                    </div>
+                    <!-- عداد النتائج مشدود لأقصى اليسار تلقائياً -->
+                    <div class="results-counter-box">
+                        <span>عدد النتائج: <strong>0</strong></span>
+                    </div>
                 </div>
             </div>
 
-            <div class="result-stats">
-                <p>عدد النتائج: 0</p>
-                <div class="result-tabs">
-                    <span><i class="fas fa-inbox"></i> المراسلات الواردة (0)</span>
-                    <span><i class="fas fa-paper-plane"></i> المراسلات الصادرة (0)</span>
+            <!-- كارتات عرض نتائج البحث الجانبية (Side-by-Side) -->
+            <div class="archive-results-grid">
+                
+                <!-- كارد نتائج المراسلات الواردة (الأزرق) -->
+                <div class="archive-result-card">
+                    <div class="card-result-header incoming-header">
+                        <i class="fas fa-inbox"></i>
+                        <h3>المراسلات الواردة <span>(0)</span></h3>
+                    </div>
+                    <div class="card-result-body">
+                        <p>لا توجد نتائج</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="empty-state">
-                <i class="fas fa-folder-open fa-3x"></i>
-                <p>لا توجد نتائج</p>
+                <!-- كارد نتائج المراسلات الصادرة (الأخضر) -->
+                <div class="archive-result-card">
+                    <div class="card-result-header outgoing-header">
+                        <i class="fas fa-paper-plane"></i>
+                        <h3>المراسلات الصادرة <span>(0)</span></h3>
+                    </div>
+                    <div class="card-result-body">
+                        <p>لا توجد نتائج</p>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>

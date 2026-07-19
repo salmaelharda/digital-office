@@ -2,12 +2,24 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <title>المراسلات الواردة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>المراسلات الواردة - مكتب الضبط الرقمي</title>
+    
+    <!-- مكتبة Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    
+    <!-- ربط خط Tajawal الموحد -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ملف الـ CSS الموحد -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="app">
+        
+        <!-- القائمة الجانبية (Sidebar) - الخيار النشط هنا هو المراسلات الواردة -->
         <aside class="sidebar">
             <div class="logo">
                 <h3>مكتب الضبط</h3>
@@ -28,35 +40,57 @@
             </div>
         </aside>
 
+        <!-- المحتوى الرئيسي (Main Content) -->
         <main class="main">
+            
+            <!-- الهيدر العلوي: العنوان وزر الإضافة بالتدرج اللوني -->
             <header class="top-bar">
-                <h1>المراسلات الواردة</h1>
-                <p>تسجيل وإدارة المراسلات الواردة إلى المؤسسة</p>
+                <div class="top-bar-text">
+                    <h1>المراسلات الواردة</h1>
+                    <p>تسجيل وإدارة المراسلات الواردة إلى المؤسسة</p>
+                </div>
+                <button class="btn-add">
+                    <i class="fas fa-plus"></i> تسجيل مراسلة جديدة
+                </button>
             </header>
 
+            <!-- شريط البحث الاحترافي المطابق للصورة -->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="ابحث برقم المراسلة، الموضوع، أو الاسم...">
+            </div>
+
+            <!-- كارد الجدول المحدث بـ 6 أعمدة ونفس ترتيب الصورة -->
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
                             <th>الرقم</th>
-                            <th>المرسل</th>
-                            <th>القسم / المصلحة</th>
-                            <th>الموضوع</th>
                             <th>تاريخ التوصل</th>
+                            <th>المرسل (Expéditeur)</th>
+                            <th>الموضوع</th>
+                            <th>القسم / المصلحة</th>
+                            <th>المرفق</th>
                         </tr>
                     </thead>
                     <tbody id="arriveeBody">
                         <tr>
-                            <td colspan="5" class="empty-row">
-                                <i class="fas fa-inbox fa-2x"></i>
+                            <!-- colspan="6" عشان يغطي كاع الأعمدة الستة بالتساوي -->
+                            <td colspan="6" class="empty-row">
+                                <div style="font-size: 40px; color: #cbd5e1; margin-bottom: 10px;">
+                                    <i class="fas fa-box-open"></i>
+                                </div>
                                 <p>لا توجد مراسلات مسجلة بعد</p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
         </main>
     </div>
+
+    <!-- ملف الـ JavaScript المشترك الذكي -->
     <script src="script.js"></script>
 </body>
 </html>
