@@ -6,6 +6,7 @@
     <title>مكتب الضبط الرقمي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <!-- الرابط الصحيح للـ CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
@@ -53,7 +54,7 @@
                 </div>
             </div>
 
-            <p class="copyright">© 2026 — مشروع نهاية التدريب</p>
+            <p class="copyright">©️ 2026 — مشروع نهاية التدريب</p>
         </div>
 
         <!-- القسم الأيمن -->
@@ -67,14 +68,15 @@
                     <button class="tab">حساب جديد</button>
                 </div>
 
-                <form id="loginForm" class="form-login">
+                <!-- تم إضافة action="/login" و method="POST" والـ name للحقول -->
+                <form action="/login" method="POST" id="loginForm" class="form-login">
                     <div class="input-group">
-                        <label>البريد الإلكتروني</label>
-                        <input type="email" placeholder="example@domain.com" />
+                        <label>الاسم المستخدم</label>
+                        <input type="text" name="username" placeholder="admin" required />
                     </div>
                     <div class="input-group">
                         <label>كلمة المرور</label>
-                        <input type="password" placeholder="••••••••" />
+                        <input type="password" name="password" placeholder="••••••••" required />
                     </div>
                     <button type="submit" class="btn-login">دخول</button>
                 </form>
@@ -99,6 +101,7 @@
         </div>
     </div>
 
+    <!-- الرابط الصحيح للـ JavaScript -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

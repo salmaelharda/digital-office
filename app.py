@@ -37,6 +37,7 @@ class Arrivee(db.Model):
     division = db.Column(db.String(150), nullable=False)
     notes = db.Column(db.Text, nullable=True)
     file_path = db.Column(db.String(255), nullable=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
 
 class Depart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -45,6 +46,7 @@ class Depart(db.Model):
     division = db.Column(db.String(150), nullable=False)
     notes = db.Column(db.Text, nullable=True)
     file_path = db.Column(db.String(255), nullable=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
 
 # ============================================================
 # ROUTES
@@ -53,13 +55,22 @@ class Depart(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if username == "admin" and password == "1234":
+        return redirect(url_for('dashboard'))
+    else:
+        return "بيانات الدخول غير صحيحة، حاول مجدداً."
+
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
 
 @app.route('/arrivee')
 def arrivee():
-    courriers = Arrivee.query.all()
+    courriers = Arrivee.query.order_by(Arrivee.id.desc()).all()
     return render_template('arrivee.html', courriers=courriers)
 
 @app.route('/add_arrivee', methods=['POST'])
@@ -81,7 +92,7 @@ def add_arrivee():
 
 @app.route('/depart')
 def depart():
-    courriers = Depart.query.all()
+    courriers = Depart.query.order_by(Depart.id.desc()).all()
     return render_template('depart.html', courriers=courriers)
 
 @app.route('/add_depart', methods=['POST'])
