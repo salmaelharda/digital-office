@@ -72,7 +72,11 @@
                             {% for courrier in courriers %}
                             <tr>
                                 <td><strong>{{ courrier.id }}</strong></td>
-                                <td>{{ courrier.date_created.strftime('%Y-%m-%d') }}</td>
+                                <td>{% if courrier.date_created %}
+    {{ courrier.date_created.strftime('%Y-%m-%d') }}
+{% else %}
+    لا يوجد تاريخ
+{% endif %}</td>
                                 <td>{{ courrier.expediteur }}</td>
                                 <td>{{ courrier.sujet }}</td>
                                 <td><span class="badge badge-blue">{{ courrier.division }}</span></td>
