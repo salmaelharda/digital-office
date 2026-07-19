@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+body , input ,button , select , textarea {
+    font-family: 'Cairo', 'Tajawal', 'Segoe UI', sans-serif;
+}
+
 body {
     font-family: 'Cairo', 'Tajawal', 'Segoe UI', sans-serif;
     background-color: #f0f4f9;
@@ -165,25 +169,25 @@ body {
 .login-card {
     background: #ffffff;
     width: 100%;
-    max-width: 420px;
-    padding: 40px 35px;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+    max-width: 500px;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
     text-align: center;
 }
 
 .login-card h2 {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 700;
     color: #0f172a;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     text-align:right;
 }
 
 .welcome-text {
     font-size: 14px;
     color: #64748b;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-align:right;
 }
 
@@ -192,8 +196,8 @@ body {
     display: flex;
     background: #f1f5f9;
     padding: 4px;
-    border-radius: 12px;
-    margin-bottom: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .tab {
@@ -219,7 +223,7 @@ body {
 
 /* حقول الإدخال */
 .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     text-align: right;
 }
 
@@ -233,10 +237,10 @@ body {
 
 .input-group input {
     width: 100%;
-    height: 46px;
+    height: 44px;
     padding: 0 16px;
     border: 1.5px solid #e2e8f0;
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 14px;
     background: #ffffff;
     color: #0f172a;
@@ -253,19 +257,26 @@ body {
 .btn-login {
     width: 100%;
     height: 46px;
-    background: #0b4c8c;
+    background: linear-gradient(90deg , #05234d 0%, #0a4387 100%);
     color: white;
     border: none;
-    border-radius: 12px;
-    font-size: 15px;
+    border-radius: 10px;
+    font-size: 16px;
     font-weight: 700;
+    font-family: tajawal, cairo, 'Segoe UI', sans-serif;
     cursor: pointer;
-    margin-top: 5px;
-    transition: background 0.2s ease;
+    margin-top: 15px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(5, 35, 77, 0.15);
 }
 
 .btn-login:hover {
-    background: #083b6f;
+    background: linear-gradient(90deg , #031733 0%, #073369 100%);
+    box-shadow: 0 6px 16px rgba(5, 35, 77, 0.25);
+}
+
+.btn-login:active {
+    transform: scale(0.98);
 }
 
 .hint {
