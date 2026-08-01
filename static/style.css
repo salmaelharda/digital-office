@@ -145,7 +145,7 @@ body {
     color: rgba(255, 255, 255, 0.45);
 }
 
-/* الكوبي رايت (باينة وواضحة دابا لتحت) */
+/* الكوبي رايت */
 .copyright {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.3);
@@ -158,7 +158,7 @@ body {
    3. LOGIN RIGHT (الجهة البيضاء - 50% من العرض)
    ============================================================ */
 .login-right {
-    flex: 1; /* واخدة 50% من العرض بالضبط بالتساوي مع الجهة الزرقاء */
+    flex: 1; 
     background: linear-gradient(145deg, #eef5fc 0%, #dce9f6 100%);
     display: flex;
     justify-content: center;
@@ -181,14 +181,14 @@ body {
     font-weight: 700;
     color: #0f172a;
     margin-bottom: 4px;
-    text-align:right;
+    text-align: right;
 }
 
 .welcome-text {
     font-size: 14px;
     color: #64748b;
     margin-bottom: 20px;
-    text-align:right;
+    text-align: right;
 }
 
 /* التبويبات (Tabs) */
@@ -218,7 +218,6 @@ body {
     background: #ffffff;
     color: #0b3c7a;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    font-family: 'Cairo', 'Tajawal', 'Segoe UI', sans-serif;
 }
 
 /* حقول الإدخال */
@@ -257,13 +256,13 @@ body {
 .btn-login {
     width: 100%;
     height: 46px;
-    background: linear-gradient(90deg , #05234d 0%, #0a4387 100%);
+    background: linear-gradient(90deg, #05234d 0%, #0a4387 100%);
     color: white;
     border: none;
     border-radius: 10px;
     font-size: 16px;
     font-weight: 700;
-    font-family: tajawal, cairo, 'Segoe UI', sans-serif;
+    font-family: 'Tajawal', sans-serif;
     cursor: pointer;
     margin-top: 15px;
     transition: all 0.2s ease;
@@ -271,7 +270,7 @@ body {
 }
 
 .btn-login:hover {
-    background: linear-gradient(90deg , #031733 0%, #073369 100%);
+    background: linear-gradient(90deg, #031733 0%, #073369 100%);
     box-shadow: 0 6px 16px rgba(5, 35, 77, 0.25);
 }
 
@@ -307,11 +306,10 @@ body {
         font-size: 26px;
     }
 }
-/* ============================================================
-   5. DASHBOARD & INTERFACES LAYOUT (واجهة المراسلات الصادرة)
-   ============================================================ */
 
-/* الحاوية الرئيسية كتقسم الشاشة بين السايدبار والمحتوى */
+/* ============================================================
+   5. DASHBOARD & INTERFACES LAYOUT
+   ============================================================ */
 .app {
     display: flex;
     width: 100vw;
@@ -320,7 +318,6 @@ body {
     background-color: #f4f7fc;
 }
 
-/* --- الـ Sidebar (الجهة الزرقاء على اليمين) --- */
 .sidebar {
     width: 280px;
     background: linear-gradient(180deg, #051937 0%, #082f63 50%, #0b3c7a 100%);
@@ -350,7 +347,6 @@ body {
     margin-top: -2px;
 }
 
-/* القائمة الجانبية وتأثير العنصر النشط (Active) */
 .sidebar nav ul {
     list-style: none;
     display: flex;
@@ -381,14 +377,12 @@ body {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* ستايل الخيار النشط بحال الصورة بالظبط */
 .sidebar nav ul li.active a {
     color: #ffffff;
     background: linear-gradient(90deg, rgba(11, 60, 122, 0.9) 0%, rgba(30, 66, 159, 0.4) 100%);
     box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1);
 }
 
-/* بطاقة المستخدم للي لتحت */
 .user-card {
     margin-top: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -417,7 +411,6 @@ body {
     margin-top: 2px;
 }
 
-/* زر تسجيل الخروج */
 .user-card button {
     background: transparent;
     border: none;
@@ -439,7 +432,6 @@ body {
     color: #f87171;
 }
 
-/* --- جهة المحتوى الرئيسي (Main) --- */
 .main {
     flex: 1;
     padding: 40px;
@@ -450,7 +442,6 @@ body {
     gap: 25px;
 }
 
-/* الهيدر العلوي */
 .top-bar {
     display: flex;
     justify-content: space-between;
@@ -469,7 +460,6 @@ body {
     margin-top: 2px;
 }
 
-/* زر "+ تسجيل مراسلة جديدة" بالتدرج الاحترافي */
 .btn-add {
     background: linear-gradient(90deg, #05234d 0%, #0a4387 100%);
     color: white;
@@ -492,7 +482,6 @@ body {
     box-shadow: 0 6px 16px rgba(5, 35, 77, 0.25);
 }
 
-/* صندوق البحث العريض */
 .search-box {
     background: #ffffff;
     border-radius: 14px;
@@ -520,17 +509,13 @@ body {
     background: transparent;
 }
 
-.search-box input::placeholder {
-    color: #94a3b8;
-}
-
-/* كارد الجدول (White Card) */
 .table-wrapper {
     background: #ffffff;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
-    overflow: hidden;
+    overflow-x: auto;
     border: 1px solid #e2e8f0;
+    padding: 20px;
 }
 
 table {
@@ -539,7 +524,6 @@ table {
     text-align: right;
 }
 
-/* ترويسة الجدول الباهتة والأنيقة */
 thead th {
     background-color: #f8fafc;
     color: #334155;
@@ -556,7 +540,6 @@ tbody td {
     border-bottom: 1px solid #f1f5f9;
 }
 
-/* حالة عدم وجود بيانات (ملمومة بحال الصورة) */
 .empty-row {
     text-align: center;
     padding: 50px 0 !important;
@@ -568,11 +551,10 @@ tbody td {
     font-size: 14px;
     font-weight: 600;
 }
-/* ============================================================
-   6. DASHBOARD CARDS & STATS SPECIFIC (إحصائيات لوحة التحكم)
-   ============================================================ */
 
-/* شبكة الكارتات الأربعة متجاوبة */
+/* ============================================================
+   6. DASHBOARD CARDS & STATS SPECIFIC
+   ============================================================ */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -580,7 +562,6 @@ tbody td {
     width: 100%;
 }
 
-/* التنسيق العام للكارد الإحصائي */
 .stat-card {
     background: #ffffff;
     border-radius: 20px;
@@ -601,19 +582,16 @@ tbody td {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
 }
 
-/* الدوائر الملونة الباهتة خلف الكارتات بحال الصورة */
 .card-circle-accent {
     position: absolute;
     width: 110px;
     height: 110px;
     border-radius: 50%;
     top: -20px;
-    right: -20px; /* في اتجاه RTL الدائرة كتكون فالبدية من الجنب */
     opacity: 0.3;
     z-index: 1;
 }
 
-/* السطر العلوي للكارد (فيه البادج والأيقونة) */
 .card-header-row {
     display: flex;
     justify-content: space-between;
@@ -622,7 +600,6 @@ tbody td {
     z-index: 2;
 }
 
-/* البادج المئوي المستقر */
 .badge {
     font-size: 11px;
     font-weight: 700;
@@ -632,7 +609,6 @@ tbody td {
 .badge-blue { background-color: #e0f2fe; color: #0369a1; }
 .badge-green { background-color: #dcfce7; color: #15803d; }
 
-/* صندوق الأيقونة الدائري والمغلوق */
 .stat-icon-box {
     width: 44px;
     height: 44px;
@@ -645,22 +621,20 @@ tbody td {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* تخصيص الألوان لكل كارد */
-.card-incoming .card-circle-accent { background: #dbeafe; right: auto; left: -20px; }
+.card-incoming .card-circle-accent { background: #dbeafe; left: -20px; }
 .icon-blue { background: #0284c7; }
 
-.card-outgoing .card-circle-accent { background: #dcfce7; right: auto; left: -20px; }
+.card-outgoing .card-circle-accent { background: #dcfce7; left: -20px; }
 .icon-green { background: #10b981; }
 
-.card-pending .card-circle-accent { background: #ffedd5; right: auto; left: -20px; }
+.card-pending .card-circle-accent { background: #ffedd5; left: -20px; }
 .icon-orange { background: #f59e0b; }
 
-.card-total .card-circle-accent { background: #f1f5f9; right: auto; left: -20px; }
+.card-total .card-circle-accent { background: #f1f5f9; left: -20px; }
 .icon-navy { background: #0f172a; }
 
-/* السطر السفلي للكارد (فيه الرقم والاسم) */
 .card-body-row {
-    text-align: left; /* الأرقام والكتابة ليمين الكارد متناسقة */
+    text-align: right;
     position: relative;
     z-index: 2;
 }
@@ -679,7 +653,6 @@ tbody td {
     color: #64748b;
 }
 
-/* الكارد الكبير السفلي */
 .dashboard-card {
     background: #ffffff;
     border-radius: 20px;
@@ -697,44 +670,9 @@ tbody td {
     text-align: right;
 }
 
-/* حالة جدول فارغ بلوحة التحكم */
-.empty-dashboard-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 0;
-    color: #94a3b8;
-}
-
-.empty-icon-wrapper {
-    font-size: 48px;
-    color: #cbd5e1;
-    margin-bottom: 15px;
-}
-
-.empty-dashboard-state p {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* توافق الشاشات الصغيرة للتابليت والهواتف */
-@media (max-width: 1024px) {
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-}
 /* ============================================================
-   7. ADVANCED ARCHIVE & SEARCH SPECIFIC (إعدادات صفحة الأرشيف)
+   7. ADVANCED ARCHIVE & SEARCH SPECIFIC
    ============================================================ */
-
-/* كارد البحث الكبير */
 .archive-search-card {
     background: #ffffff;
     border-radius: 20px;
@@ -760,7 +698,6 @@ tbody td {
     color: #334155;
 }
 
-/* صندوق الإدخال مع الأيقونة لداخل */
 .archive-input-wrapper {
     position: relative;
     display: flex;
@@ -770,7 +707,7 @@ tbody td {
 .archive-input-wrapper input {
     width: 100%;
     height: 48px;
-    padding: 0 45px 0 16px; /* مساحة للأيقونة على اليمين */
+    padding: 0 45px 0 16px;
     border: 1.5px solid #e2e8f0;
     border-radius: 12px;
     font-family: 'Tajawal', sans-serif;
@@ -790,7 +727,6 @@ tbody td {
     font-size: 16px;
 }
 
-/* سطر التواريخ والعداد */
 .search-dates-row {
     display: flex;
     align-items: flex-end;
@@ -818,7 +754,6 @@ tbody td {
     width: 100%;
 }
 
-/* دفع عداد النتائج لأقصى اليسار في الـ RTL */
 .results-counter-box {
     margin-right: auto; 
     font-size: 14px;
@@ -831,7 +766,6 @@ tbody td {
     font-weight: 800;
 }
 
-/* شبكة كروت النتائج التحتانية (جوج كروت حدا بعضياتهم) */
 .archive-results-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -850,7 +784,6 @@ tbody td {
     flex-direction: column;
 }
 
-/* هيدر الكارد */
 .card-result-header {
     display: flex;
     align-items: center;
@@ -867,22 +800,14 @@ tbody td {
     font-weight: 700;
 }
 
-/* ألوان المراسلات الواردة (الأزرق التفاعلي) */
-.incoming-header i, .incoming-header h3 {
-    color: #0284c7;
-}
-
-/* ألوان المراسلات الصادرة (الأخضر التفاعلي) */
-.outgoing-header i, .outgoing-header h3 {
-    color: #10b981;
-}
+.incoming-header i, .incoming-header h3 { color: #0284c7; }
+.outgoing-header i, .outgoing-header h3 { color: #10b981; }
 
 .card-result-header h3 span {
     color: #64748b;
     font-weight: 500;
 }
 
-/* محتوى الحالة الفارغة لوسط كروت الأرشيف */
 .card-result-body {
     flex: 1;
     display: flex;
@@ -893,56 +818,34 @@ tbody td {
     font-weight: 600;
 }
 
-/* متوافق مع الشاشات الصغيرة */
-@media (max-width: 768px) {
-    .search-dates-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    .date-input-group {
-        width: 100%;
-    }
-    .results-counter-box {
-        margin-right: 0;
-        padding-bottom: 0;
-    }
-    .archive-results-grid {
-        grid-template-columns: 1fr;
-    }
-}
 /* ============================================================
-   8. MODAL POPUP STYLES (تنسيق النافذة المنبثقة للتسجيل الجديد)
+   8. MODAL POPUP STYLES
    ============================================================ */
-
-/* غطاء الخلفية اللي كيغطي الشاشة كاملة وكيضلمها */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(15, 23, 42, 0.4); /* تعتيم ناعم وعصري */
-    backdrop-filter: blur(4px); /* ضبابية خفيفة للخلفية بحال الصورة */
-    display: none; /* مخفي تلقائياً وكيظهر بالـ JS */
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* باش يجي فوق كولشي */
+    z-index: 9999;
     padding: 20px;
 }
 
-/* الكارد الأبيض الرئيسي للنافذة */
 .modal-container {
     background: #ffffff;
     width: 540px;
     max-width: 100%;
     border-radius: 16px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     padding: 30px;
     animation: fadeInModal 0.3s ease-out;
 }
 
-/* الرأس: العنوان وعلامة X */
 .modal-header {
     display: flex;
     justify-content: space-between;
@@ -970,7 +873,6 @@ tbody td {
     color: #64748b;
 }
 
-/* مجموعات الحقول */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -985,7 +887,6 @@ tbody td {
     color: #475569;
 }
 
-/* تنسيق الـ inputs والـ textarea بحال الصورة بالظبط */
 .form-group input[type="text"],
 .form-group textarea {
     width: 100%;
@@ -1007,7 +908,6 @@ tbody td {
     box-shadow: 0 0 0 3px rgba(10, 67, 135, 0.08);
 }
 
-/* تنسيق حقل رفع الملفات الاحترافي */
 .file-input {
     font-family: 'Tajawal', sans-serif;
     font-size: 13px;
@@ -1020,17 +920,15 @@ tbody td {
     width: 100%;
 }
 
-/* سطر الأزرار التحتاني */
 .modal-footer {
     display: flex;
     gap: 12px;
     margin-top: 25px;
-    flex-direction: row-reverse; /* باش يجي تسجيل على اليمين وإلغاء على اليسار */
+    flex-direction: row-reverse;
 }
 
-/* زر تسجيل الأزرق العريض */
 .btn-modal-submit {
-    flex: 1; /* كياخد المساحة الكبيرة المتبقية */
+    flex: 1;
     height: 46px;
     background: linear-gradient(90deg, #05234d 0%, #0a4387 100%);
     color: #ffffff;
@@ -1047,7 +945,6 @@ tbody td {
     opacity: 0.95;
 }
 
-/* زر إلغاء الأبيض الصغير */
 .btn-modal-cancel {
     width: 80px;
     height: 46px;
@@ -1067,258 +964,83 @@ tbody td {
     color: #334155;
 }
 
-/* أنيميشن دخول النافذة بسلاسة */
 @keyframes fadeInModal {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
-/* ============================================================
-   9. MODERN TOAST NOTIFICATIONS (تنسيق الإشعارات العلوية العصرية)
-   ============================================================ */
 
+/* ============================================================
+   9. MODERN TOAST NOTIFICATIONS & EXTRAS
+   ============================================================ */
 .custom-toast {
     position: fixed;
     top: 20px;
     left: 50%;
-    transform: translateX(-50%); /* سنترة الإشعار فالوسط بالضبط الفوق */
+    transform: translateX(-50%);
     padding: 12px 28px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 12px;
-    z-index: 100000; /* يظهر فوق المودال وفوق كلشي */
+    z-index: 100000;
     font-family: 'Tajawal', sans-serif;
     font-size: 14px;
     font-weight: 600;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    direction: rtl; /* متناسق مع اللغة العربية */
-    
-    /* الحركة عند الظهور: كيهبط بسلاسة من الفوق */
+    direction: rtl;
     animation: slideDownToast 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transition: all 0.3s ease;
 }
 
-/* حالة إشعار النجاح (الأخضر الباهت العصري بحال الصورة 12) */
 .toast-success {
     background-color: #e6f4ea; 
     color: #137333;
     border: 1px solid rgba(22, 163, 74, 0.2);
 }
-.toast-success .toast-icon {
-    color: #15803d;
-}
 
-/* حالة إشعار الخطأ (الأحمر/الوردي الباهت بحال الصورة 11 و 13) */
 .toast-error {
     background-color: #fce8e6;
     color: #c5221f;
     border: 1px solid rgba(220, 38, 38, 0.2);
 }
-.toast-error .toast-icon {
-    color: #b91c1c;
-}
 
-/* تنسيق الأيقونة المرافقة للإشعار */
 .toast-icon {
     font-size: 16px;
     display: flex;
     align-items: center;
 }
 
-.toast-text {
-    line-height: 1.4;
-}
-
-/* كلاس كيتزاد بالـ JS باش يختفي الإشعار بسلاسة للفوق */
 .custom-toast.hide {
     animation: slideUpToast 0.3s ease forwards;
 }
 
-/* أنيميشن الهبوط من الأعلى */
 @keyframes slideDownToast {
-    from {
-        top: -60px;
-        opacity: 0;
-    }
-    to {
-        top: 25px;
-        opacity: 1;
-    }
+    from { top: -60px; opacity: 0; }
+    to { top: 25px; opacity: 1; }
 }
 
-/* أنيميشن الصعود عند الاختفاء */
 @keyframes slideUpToast {
-    from {
-        top: 25px;
-        opacity: 1;
-    }
-    to {
-        top: -60px;
-        opacity: 0;
-    }
+    from { top: 25px; opacity: 1; }
+    to { top: -60px; opacity: 0; }
 }
-/* تنسيق زر الحذف */
+
 .fa-trash {
     transition: transform 0.2s ease, color 0.2s ease;
     cursor: pointer;
 }
 
 .fa-trash:hover {
-    transform: scale(1.2); /* كيكبر شوية ملي كتحطي الماوس عليه */
-    color: #ef4444 !important; /* كيولي أحمر غامق ومجهد */
+    transform: scale(1.2);
+    color: #ef4444 !important;
 }
 
-/* باش الجدول يبقى مقاد وما يخرجش التصميم */
-.table-wrapper {
-    overflow-x: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-}
-// ============================================================
-// 1. CUSTOM TOAST NOTIFICATION ENGINE
-// ============================================================
-function showToast(message, type = 'success') {
-    const toast = document.createElement('div');
-    toast.className = `custom-toast toast-${type}`;
-    const icon = type === 'success' 
-        ? '<i class="fas fa-check-circle"></i>' 
-        : '<i class="fas fa-exclamation-circle"></i>';
-    
-    toast.innerHTML = `
-        <span class="toast-text">${message}</span>
-        <span class="toast-icon">${icon}</span>
-    `;
-    
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.classList.add('hide');
-        toast.addEventListener('animationend', () => {
-            toast.remove();
-        });
-    }, 3500);
-}
-
-// ============================================================
-// 2. AUTHENTICATION LOGIC
-// ============================================================
-const tabs = document.querySelectorAll('.tab');
-const loginForm = document.getElementById('loginForm');
-const signupForm = document.getElementById('signupForm');
-
-if (tabs.length > 0 && loginForm && signupForm) {
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            tabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-
-            if (this.textContent.trim() === 'تسجيل الدخول') {
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-            } else {
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-            }
-        });
-    });
-
-    signupForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        showToast('تم إنشاء الحساب بنجاح! يمكنك الدخول الآن.', 'success');
-        if(tabs[0]) tabs[0].click();
-    });
-}
-
-// ============================================================
-// 3. GLOBAL & SIDEBAR LOGIC
-// ============================================================
-function logout() {
-    showToast('تم تسجيل الخروج بنجاح. رافقتك السلامة!', 'success');
-    setTimeout(() => {
-        window.location.href = '/'; 
-    }, 1200);
-}
-
-// ============================================================
-// 4. MODAL LOGIC
-// ============================================================
-const modal = document.getElementById('correspondenceModal');
-const btnOpenModal = document.querySelector('.btn-add');
-const formNewCorrespondence = document.getElementById('formNewCorrespondence');
-
-if (btnOpenModal && modal) {
-    btnOpenModal.addEventListener('click', function() {
-        modal.style.display = 'flex'; 
-    });
-}
-
-function closeModal() {
-    const modal = document.getElementById('correspondenceModal');
-    if (modal) {
-        modal.style.display = 'none'; 
-        if(formNewCorrespondence) formNewCorrespondence.reset(); 
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-if (modal) {
-    window.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-}
-
-// ============================================================
-// 5. FORM SUBMISSION (Dynamic)
-// ============================================================
-if (formNewCorrespondence) {
-    formNewCorrespondence.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const formData = new FormData(formNewCorrespondence);
-        const targetUrl = formNewCorrespondence.getAttribute('action');
-        
-        fetch(targetUrl, {
-            method: 'POST',
-            body: formData
-        })
-        .then(() => {
-            showToast('تمت العملية بنجاح!', 'success');
-            closeModal();
-            setTimeout(() => { window.location.reload(); }, 1000);
-        })
-        .catch(error => {
-            showToast('حدث خطأ أثناء التسجيل!', 'error');
-            console.error('Error:', error);
-        });
-    });
-}
-
-/* في ملف style.css */
-.custom-toast {
-    position: fixed;
-    top: 20px; /* هنا كتحكمي أنه يطلع الفوق */
-    right: 20px;
-    z-index: 9999;
-    background-color: #333;
-    color: #fff;
-    padding: 15px 25px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from { transform: translateY(-100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
 }

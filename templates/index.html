@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>مكتب الضبط الرقمي</title>
+    <!-- العنوان والوصف الاحترافي لمحركات البحث -->
+    <title>مكتب الضبط الرقمي - قلعة سراغنة</title>
+    <meta name="description" content="منصة مكتب الضبط الرقمي لإدارة وتتبع المراسلات الواردة والصادرة بقلعة سراغنة بطريقة إلكترونية آمنة.">
+    <meta name="keywords" content="مكتب الضبط, قلعة سراغنة, المراسلات الإدارية, Bureau d'ordre">
+    
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <!-- الرابط الصحيح للـ CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
@@ -23,7 +26,7 @@
                         <p class="brand-sub">Bureau d'ordre digital</p>
                     </div>
                 </div>
-                <h2>نظام متكامل <br /> إدارة المراسلات الإدارية</h2>
+                <h2>نظام متكامل <br /> لإدارة المراسلات الإدارية</h2>
                 <p class="desc">
                     سجل، تتبع، وأرشف المراسلات الواردة والصادرة بشكل رقمي.<br />
                     آمن، واستغني عن السجلات الورقية.
@@ -68,10 +71,10 @@
                     <button class="tab">حساب جديد</button>
                 </div>
 
-                <!-- تم إضافة action="/login" و method="POST" والـ name للحقول -->
+                <!-- نموذج تسجيل الدخول -->
                 <form action="/login" method="POST" id="loginForm" class="form-login">
                     <div class="input-group">
-                        <label>الاسم المستخدم</label>
+                        <label>اسم المستخدم</label>
                         <input type="text" name="username" placeholder="admin" required />
                     </div>
                     <div class="input-group">
@@ -81,21 +84,22 @@
                     <button type="submit" class="btn-login">دخول</button>
                 </form>
 
+                <!-- نموذج إنشاء حساب جديد -->
                 <form id="signupForm" class="form-signup" style="display: none;">
                     <div class="input-group">
                         <label>الاسم الكامل</label>
-                        <input type="text" placeholder="الاسم الثلاثي" />
+                        <input type="text" placeholder="الاسم الثلاثي" required />
                     </div>
                     <div class="input-group">
                         <label>البريد الإلكتروني</label>
-                        <input type="email" placeholder="example@domain.com" />
+                        <input type="email" placeholder="example@domain.com" required />
                     </div>
                     <div class="input-group">
                         <label>كلمة المرور</label>
-                        <input type="password" placeholder="••••••••" />
+                        <input type="password" placeholder="••••••••" required />
                     </div>
                     <button type="submit" class="btn-login">إنشاء الحساب</button>
-                    <p class="hint">(أدخل حساب إدخال حسابك المحدد)</p>
+                    <p class="hint">(أدخل معلومات الحساب المحدد)</p>
                 </form>
             </div>
         </div>
